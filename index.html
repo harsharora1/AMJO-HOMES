@@ -129,7 +129,6 @@ footer{background:#000;text-align:center;padding:22px;color:var(--soft)}
         <li><a href="#products" onclick="showHomePageOnly()">Products</a></li>
         <li><a href="#gallery" onclick="showHomePageOnly()">Gallery</a></li>
         <li><a href="#quality" onclick="showHomePageOnly()">Quality</a></li>
-        <li><a href="#contact" onclick="showHomePageOnly()">Contact</a></li>
       </ul>
     </nav>
 
@@ -193,6 +192,18 @@ footer{background:#000;text-align:center;padding:22px;color:var(--soft)}
   </div>
 </section>
 
+<section class="quality" id="quality">
+  <div class="container">
+    <div class="section-title"><span>Why Choose Us</span><h2>Simple Promise</h2></div>
+    <div class="quality-grid">
+      <div class="quality-box"><h3>Premium Look</h3><p>Products ghar ko beautiful aur modern feel dete hain.</p></div>
+      <div class="quality-box"><h3>Daily Comfort</h3><p>Daily use ke liye comfortable products.</p></div>
+      <div class="quality-box"><h3>Retail & Bulk</h3><p>Single piece aur bulk orders available.</p></div>
+    </div>
+  </div>
+</section>
+
+
 <section class="gallery" id="gallery">
   <div class="container">
     <div class="section-title">
@@ -207,47 +218,6 @@ footer{background:#000;text-align:center;padding:22px;color:var(--soft)}
       <div class="gallery-item"><img src="img.png/hero.png" loading="lazy" decoding="async"></div>
       <div class="gallery-item"><img src="img.png/hero.png" loading="lazy" decoding="async"></div>
       <div class="gallery-item"><img src="img.png/hero.png" loading="lazy" decoding="async"></div>
-    </div>
-  </div>
-</section>
-
-<section class="quality" id="quality">
-  <div class="container">
-    <div class="section-title"><span>Why Choose Us</span><h2>Simple Promise</h2></div>
-    <div class="quality-grid">
-      <div class="quality-box"><h3>Premium Look</h3><p>Products ghar ko beautiful aur modern feel dete hain.</p></div>
-      <div class="quality-box"><h3>Daily Comfort</h3><p>Daily use ke liye comfortable products.</p></div>
-      <div class="quality-box"><h3>Retail & Bulk</h3><p>Single piece aur bulk orders available.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="contact" id="contact">
-  <div class="container">
-    <div class="contact-box">
-      <div>
-        <h2>Contact AMJO HOME'S</h2>
-        <p>Catalogue, latest designs, prices aur bulk order ke liye WhatsApp 96464-32566 par order details bhejo.</p>
-        <div class="contact-list">
-          <div>WhatsApp: 96464-32566</div>
-          <div>Location: Punjab, India</div>
-          <div>Products: Bedsheets • Blankets • Towels • Carpets</div>
-        </div>
-      </div>
-
-      <form onsubmit="sendWhatsApp(event)">
-        <input type="text" id="name" placeholder="Your Name" required>
-        <input type="tel" id="phone" placeholder="Mobile Number" required>
-        <select id="product" required>
-          <option value="Bedsheets">Bedsheets</option>
-          <option value="Blankets">Blankets</option>
-          <option value="Towels">Towels</option>
-          <option value="Carpets">Carpets</option>
-          <option value="Bulk Order">Bulk Order</option>
-        </select>
-        <textarea id="message" placeholder="What do you need?"></textarea>
-        <button type="submit">Send On WhatsApp</button>
-      </form>
     </div>
   </div>
 </section>
