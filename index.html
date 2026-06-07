@@ -114,7 +114,7 @@ footer{background:#000;text-align:center;padding:22px;color:var(--soft)}
 
 <body>
 
-<div class="top-bar">AMJO HOME'S — Bedsheets • Blankets • Towels • Carpets | WhatsApp: 96464-32566</div>
+<div class="top-bar">AMJO HOME'S — Bedsheets • Blankets • Towels • Carpets </div>
 
 <header>
   <div class="nav">
@@ -142,7 +142,7 @@ footer{background:#000;text-align:center;padding:22px;color:var(--soft)}
   <div>
     <h1>Premium Home Collection For <span>Beautiful Living</span></h1>
     <p>AMJO HOME'S brings stylish bedsheets, cozy blankets, soft towels and elegant carpets for your home.</p>
-    <a href="#categories" class="btn-main">View Collection</a>
+    <a href="#categories" class="btn-main" onclick="scrollToCategories(event)">View Collection</a>
   </div>
   <div class="hero-img">
     <img src="img.png/hero.png" alt="Hero" loading="eager" decoding="async">
@@ -457,6 +457,21 @@ function changeImage(direction){
 function selectImage(index){
   currentImageIndex=index;
   loadDetailImage();
+}
+
+function scrollToCategories(event){
+  if(event) event.preventDefault();
+
+  setPage("home");
+
+  history.pushState({page:"home",scrollY:0},"","#categories");
+
+  setTimeout(()=>{
+    const categoriesSection = document.getElementById("categories");
+    if(categoriesSection){
+      categoriesSection.scrollIntoView({behavior:"smooth", block:"start"});
+    }
+  },50);
 }
 
 function showHomePageOnly(){
