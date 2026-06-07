@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AMJO HOME'S</title>
+<link rel="preload" as="image" href="img.png/hero.png">
+<link rel="preload" as="image" href="img.png/hero1.png">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
@@ -11,6 +13,7 @@ html{scroll-behavior:auto}
 body{font-family:Poppins,Arial,sans-serif;background:#020617;color:white;overflow-x:hidden}
 a{text-decoration:none;color:inherit}
 img{width:100%;display:block;pointer-events:none}
+section{content-visibility:auto;contain-intrinsic-size:900px}
 :root{--gold:#d4af37;--gold2:#f1d77a;--soft:#dbe7ff;--border:rgba(212,175,55,.28)}
 .top-bar{background:#000;color:var(--gold2);text-align:center;padding:10px;font-weight:700}
 header{background:#020617;border-bottom:1px solid var(--border);position:relative;z-index:99}
@@ -109,6 +112,19 @@ footer{background:#000;text-align:center;padding:22px;color:var(--soft)}
   .detail-info{padding:22px}.detail-info h2{font-size:30px}.detail-price{font-size:24px}
   .contact-box{padding:24px 18px;border-radius:24px}.contact-box h2{font-size:32px;text-align:center}.contact-box p{font-size:14px;text-align:center}.contact-list div{font-size:13px;text-align:center}
 }
+
+
+/* Full Image Popup With Arrows */
+.full-image-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.96);z-index:99999;align-items:center;justify-content:center;padding:18px}
+.full-image-modal.active{display:flex}
+.full-image-modal img{width:auto;max-width:92vw;max-height:88vh;object-fit:contain;border-radius:14px;box-shadow:0 20px 70px rgba(0,0,0,.55);pointer-events:auto}
+.modal-close{position:absolute;top:18px;right:24px;width:46px;height:46px;border:1px solid rgba(255,255,255,.25);border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font-size:34px;line-height:40px;cursor:pointer;z-index:2}
+.modal-arrow{position:absolute;top:50%;transform:translateY(-50%);width:58px;height:58px;border:1px solid rgba(255,255,255,.25);border-radius:50%;background:rgba(255,255,255,.16);color:#fff;font-size:34px;font-weight:900;cursor:pointer;z-index:2;display:flex;align-items:center;justify-content:center;transition:.25s}
+.modal-arrow:hover,.modal-close:hover{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000}
+.modal-arrow.left{left:22px}.modal-arrow.right{right:22px}
+#mainProductImage{pointer-events:auto;cursor:zoom-in}
+@media(max-width:600px){.modal-arrow{width:44px;height:44px;font-size:26px}.modal-arrow.left{left:8px}.modal-arrow.right{right:8px}.modal-close{top:10px;right:10px;width:40px;height:40px;font-size:30px}.full-image-modal img{max-width:96vw;max-height:82vh}}
+
 </style>
 </head>
 
@@ -119,7 +135,7 @@ footer{background:#000;text-align:center;padding:22px;color:var(--soft)}
 <header>
   <div class="nav">
     <a href="#" class="logo" onclick="goHome(event)">
-      <img src="img.png/hero1.png" alt="Logo" loading="eager" decoding="async">
+      <img src="img.png/hero1.png" alt="Logo" loading="eager" decoding="async" fetchpriority="high">
       <div><strong>AMJO HOME'S</strong><span>Home Collection</span></div>
     </a>
 
@@ -145,7 +161,7 @@ footer{background:#000;text-align:center;padding:22px;color:var(--soft)}
     <a href="#categories" class="btn-main" onclick="scrollToCategories(event)">View Collection</a>
   </div>
   <div class="hero-img">
-    <img src="img.png/hero.png" alt="Hero" loading="eager" decoding="async">
+    <img src="img.png/hero.png" alt="Hero" loading="eager" decoding="async" fetchpriority="high">
   </div>
 </section>
 
@@ -275,20 +291,28 @@ footer{background:#000;text-align:center;padding:22px;color:var(--soft)}
         </div>
 
         <div class="detail-buttons">
-          <a id="detailWhatsapp" class="btn-main" target="_blank">Order Now On WhatsApp</a>
-          <button class="back-btn" onclick="goHome()">Home</button>
+          <a id="detailWhatsapp" class="btn-main" target="_blank">Order Now</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+
+
+<div id="fullImageModal" class="full-image-modal" onclick="closeFullImage(event)">
+  <button class="modal-close" onclick="closeFullImage(event)">&times;</button>
+  <button class="modal-arrow left" onclick="modalChangeImage(event,-1)">‹</button>
+  <img id="fullImageView" src="" alt="Full Product Image">
+  <button class="modal-arrow right" onclick="modalChangeImage(event,1)">›</button>
+</div>
+
 <footer>© 2026 AMJO HOME'S. Bedsheets • Blankets • Towels • Carpets | WhatsApp: 96464-32566</footer>
 
 <script>
 history.scrollRestoration = "manual";
 
-const whatsappNumber = "919646443256";
+const whatsappNumber = "919646432566";
 
 const allProducts = {
   bedsheets:{
@@ -335,6 +359,7 @@ const allProducts = {
 
 let currentProduct=null;
 let currentImageIndex=0;
+let modalImageIndex=0;
 
 function saveCurrentScroll(){
   const state = history.state || {page:"home"};
@@ -435,7 +460,9 @@ function openProduct(cat,index,push){
 }
 
 function loadDetailImage(){
-  document.getElementById("mainProductImage").src=currentProduct.images[currentImageIndex];
+  const mainImg=document.getElementById("mainProductImage");
+  mainImg.src=currentProduct.images[currentImageIndex];
+  mainImg.onclick=function(){openFullImage(currentImageIndex)};
   document.querySelectorAll(".thumbs img").forEach((img,i)=>{
     img.classList.toggle("active",i===currentImageIndex);
   });
@@ -527,8 +554,118 @@ function sendWhatsApp(event){
   window.open(`https://wa.me/${whatsappNumber}?text=${text}`,"_blank");
 }
 
-history.replaceState({page:"home",scrollY:window.scrollY},"",location.pathname);
-loadAllProducts();
+
+function openFullImage(index){
+  if(!currentProduct || !currentProduct.images || !currentProduct.images.length) return;
+  modalImageIndex=index;
+  document.getElementById("fullImageView").src=currentProduct.images[modalImageIndex];
+  document.getElementById("fullImageModal").classList.add("active");
+  document.body.style.overflow="hidden";
+}
+
+function closeFullImage(event){
+  if(event) event.stopPropagation();
+  document.getElementById("fullImageModal").classList.remove("active");
+  document.body.style.overflow="";
+}
+
+function modalChangeImage(event,direction){
+  if(event) event.stopPropagation();
+  if(!currentProduct || !currentProduct.images || !currentProduct.images.length) return;
+  modalImageIndex+=direction;
+  if(modalImageIndex<0) modalImageIndex=currentProduct.images.length-1;
+  if(modalImageIndex>=currentProduct.images.length) modalImageIndex=0;
+  document.getElementById("fullImageView").src=currentProduct.images[modalImageIndex];
+}
+
+document.addEventListener("keydown",function(event){
+  const modal=document.getElementById("fullImageModal");
+  if(!modal || !modal.classList.contains("active")) return;
+  if(event.key==="Escape") closeFullImage(event);
+  if(event.key==="ArrowLeft") modalChangeImage(event,-1);
+  if(event.key==="ArrowRight") modalChangeImage(event,1);
+});
+
+function getRouteFromHash(){
+  const hash = location.hash || "";
+  if(hash.startsWith("#category-")){
+    const cat = hash.replace("#category-","");
+    if(allProducts[cat]) return {page:"category",cat:cat,scrollY:0};
+  }
+
+  if(hash.startsWith("#product-")){
+    const parts = hash.replace("#product-","").split("-");
+    const index = Number(parts.pop());
+    const cat = parts.join("-");
+    if(allProducts[cat] && allProducts[cat].products[index]){
+      return {page:"product",cat:cat,index:index,scrollY:0};
+    }
+  }
+
+  if(hash === "#categories" || hash === "#products" || hash === "#gallery" || hash === "#quality"){
+    return {page:"home",target:hash.replace("#",""),scrollY:0};
+  }
+
+  return {page:"home",scrollY:0};
+}
+
+function savePageBeforeRefresh(){
+  const state = history.state || getRouteFromHash();
+  const finalState = {...state, scrollY:window.scrollY};
+  history.replaceState(finalState,"",location.href);
+  sessionStorage.setItem("amjoLastPage", JSON.stringify(finalState));
+}
+
+window.addEventListener("pagehide", savePageBeforeRefresh);
+window.addEventListener("beforeunload", savePageBeforeRefresh);
+
+function initPage(){
+  loadAllProducts();
+
+  const route = getRouteFromHash();
+  const saved = sessionStorage.getItem("amjoLastPage");
+  let savedState = null;
+
+  try{
+    savedState = saved ? JSON.parse(saved) : null;
+  }catch(e){
+    savedState = null;
+  }
+
+  let initialState = route;
+
+  if((!location.hash || location.hash === "#") && savedState && savedState.page){
+    initialState = savedState;
+  }
+
+  if(initialState.page === "category"){
+    history.replaceState(initialState,"","#category-"+initialState.cat);
+    openCategory(initialState.cat,false);
+    restoreScroll(initialState.scrollY || 0);
+    return;
+  }
+
+  if(initialState.page === "product"){
+    history.replaceState(initialState,"","#product-"+initialState.cat+"-"+initialState.index);
+    openProduct(initialState.cat,initialState.index,false);
+    restoreScroll(initialState.scrollY || 0);
+    return;
+  }
+
+  setPage("home");
+  history.replaceState(initialState,"",location.hash ? location.hash : location.pathname);
+
+  if(initialState.target){
+    setTimeout(()=>{
+      const target = document.getElementById(initialState.target);
+      if(target) target.scrollIntoView({behavior:"auto", block:"start"});
+    },60);
+  }else{
+    restoreScroll(initialState.scrollY || 0);
+  }
+}
+
+initPage();
 </script>
 
 </body>
