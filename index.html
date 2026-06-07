@@ -19,7 +19,7 @@
 html{scroll-behavior:smooth;}
 
 body{
-  font-family:Poppins,sans-serif;
+  font-family:Poppins,Arial,sans-serif;
   background:#020617;
   color:white;
   overflow-x:hidden;
@@ -76,7 +76,6 @@ header{
 }
 
 .logo strong{font-size:20px;}
-
 .logo span{
   display:block;
   color:var(--gold2);
@@ -109,18 +108,13 @@ nav a::after{
   transition:.3s;
 }
 
-nav a:hover{
-  color:var(--gold2);
-}
+nav a:hover{color:var(--gold2);}
+nav a:hover::after{width:100%;}
 
-nav a:hover::after{
-  width:100%;
-}
-
-.order-btn,.btn-main,.small-btn{
+.order-btn,.btn-main,.small-btn,.back-btn{
   background:linear-gradient(135deg,var(--gold),var(--gold2));
   color:#000;
-  padding:12px 20px;
+  border:0;
   border-radius:30px;
   font-weight:900;
   display:inline-block;
@@ -128,22 +122,13 @@ nav a:hover::after{
   transition:.3s;
 }
 
+.order-btn,.btn-main{padding:12px 20px;}
+.small-btn{padding:10px 15px;font-size:13px;}
+.back-btn{padding:8px 14px;font-size:13px;}
+
 .order-btn:hover,.btn-main:hover,.small-btn:hover,.back-btn:hover{
   transform:translateY(-3px);
   box-shadow:0 12px 30px rgba(212,175,55,.3);
-}
-
-.back-btn{
-  background:linear-gradient(135deg,var(--gold),var(--gold2));
-  color:#000;
-  padding:8px 14px;
-  border-radius:22px;
-  font-weight:900;
-  display:inline-block;
-  cursor:pointer;
-  font-size:13px;
-  width:auto;
-  transition:.3s;
 }
 
 .hero{
@@ -175,11 +160,19 @@ nav a:hover::after{
   overflow:hidden;
   border:1px solid var(--border);
   background:#fff;
+  transition:.45s ease;
+  box-shadow:0 15px 45px rgba(0,0,0,.25);
 }
 
 .hero-img img{
   height:520px;
   object-fit:cover;
+}
+
+.hero-img:hover{
+  transform:translateY(-10px);
+  border-color:var(--gold2);
+  box-shadow:0 25px 70px rgba(212,175,55,.28);
 }
 
 section{padding:65px 0;}
@@ -230,14 +223,15 @@ section{padding:65px 0;}
   gap:22px;
 }
 
-.cat-card{
+.cat-card,.product-card,.gallery-item,.quality-box{
   background:#0b1f3f;
   border:1px solid var(--border);
   border-radius:25px;
   overflow:hidden;
   transition:.3s;
-  cursor:pointer;
 }
+
+.cat-card,.product-card{cursor:pointer;}
 
 .cat-card:hover,.product-card:hover,.gallery-item:hover{
   transform:translateY(-6px);
@@ -245,7 +239,7 @@ section{padding:65px 0;}
   box-shadow:0 20px 60px rgba(0,0,0,.4);
 }
 
-.cat-card img{
+.cat-card img,.product-card img{
   height:240px;
   object-fit:cover;
   background:#fff;
@@ -253,21 +247,19 @@ section{padding:65px 0;}
 
 .cat-card div{padding:20px;}
 
-.cat-card h3{
+.cat-card h3,.product-info h3{
   color:var(--gold2);
-  font-size:25px;
+  font-size:22px;
 }
 
-.cat-card p{
+.cat-card p,.product-info p{
   color:var(--soft);
   font-size:14px;
   margin-top:8px;
   line-height:1.6;
 }
 
-.product-category{
-  margin-bottom:38px;
-}
+.product-category{margin-bottom:38px;}
 
 .category-heading{
   display:flex;
@@ -284,10 +276,7 @@ section{padding:65px 0;}
   color:var(--gold2);
 }
 
-.category-heading p{
-  color:var(--soft);
-  margin-top:6px;
-}
+.category-heading p{color:var(--soft);margin-top:6px;}
 
 .product-grid{
   display:grid;
@@ -295,32 +284,21 @@ section{padding:65px 0;}
   gap:22px;
 }
 
-.product-card{
-  background:#0b1f3f;
-  border:1px solid var(--border);
-  border-radius:22px;
-  overflow:hidden;
-  transition:.3s;
-}
-
-.product-card img{
-  height:240px;
-  object-fit:cover;
-  background:#fff;
-}
-
 .product-info{padding:18px;}
 
-.product-info h3{
-  color:var(--gold2);
-  font-size:22px;
+.price{
+  color:#fff;
+  font-size:18px;
+  font-weight:900;
+  margin:10px 0;
 }
 
-.product-info p{
-  color:var(--soft);
-  font-size:14px;
-  margin-top:8px;
-  line-height:1.6;
+.card-actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-top:13px;
+  flex-wrap:wrap;
 }
 
 .gallery-grid{
@@ -329,21 +307,13 @@ section{padding:65px 0;}
   gap:22px;
 }
 
-.gallery-item{
-  border-radius:24px;
-  overflow:hidden;
-  border:1px solid var(--border);
-  background:#0b1f3f;
-  transition:.3s;
-}
-
 .gallery-item img{
   height:310px;
   object-fit:cover;
   background:#fff;
 }
 
-#categoryPage{
+#categoryPage,#productDetailPage{
   display:none;
   background:#020617;
 }
@@ -366,6 +336,122 @@ section{padding:65px 0;}
   margin-top:8px;
 }
 
+.detail-box{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:35px;
+  align-items:start;
+}
+
+.slider{
+  background:#0b1f3f;
+  border:1px solid var(--border);
+  border-radius:28px;
+  overflow:hidden;
+  position:relative;
+}
+
+.slider-main img{
+  height:520px;
+  object-fit:cover;
+  background:#fff;
+}
+
+.slider-arrows{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  padding:14px;
+  background:#07152f;
+}
+
+.slider-arrows button{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:#000;
+  font-size:25px;
+  font-weight:900;
+  border:0;
+  cursor:pointer;
+}
+
+.thumbs{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+  padding:12px;
+  background:#07152f;
+}
+
+.thumbs img{
+  height:85px;
+  object-fit:cover;
+  background:#fff;
+  border-radius:12px;
+  border:2px solid transparent;
+  cursor:pointer;
+  pointer-events:auto;
+}
+
+.thumbs img.active{
+  border-color:var(--gold2);
+}
+
+.detail-info{
+  background:linear-gradient(135deg,#0b1f3f,#050b18);
+  border:1px solid var(--border);
+  border-radius:28px;
+  padding:30px;
+}
+
+.detail-info span{
+  color:var(--gold2);
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+.detail-info h2{
+  font-size:42px;
+  margin:10px 0;
+  color:var(--gold2);
+}
+
+.detail-price{
+  font-size:28px;
+  font-weight:900;
+  color:white;
+  margin:15px 0;
+}
+
+.detail-info p{
+  color:var(--soft);
+  line-height:1.8;
+  margin-bottom:18px;
+}
+
+.feature-list{
+  display:grid;
+  gap:10px;
+  margin:20px 0;
+}
+
+.feature-list div{
+  background:rgba(255,255,255,.04);
+  border:1px solid var(--border);
+  padding:12px 14px;
+  border-radius:14px;
+  color:var(--soft);
+}
+
+.detail-buttons{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:20px;
+}
+
 .quality-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -373,11 +459,15 @@ section{padding:65px 0;}
 }
 
 .quality-box{
-  background:#0b1f3f;
-  border:1px solid var(--border);
-  border-radius:25px;
   padding:30px;
   text-align:center;
+  position:relative;
+}
+
+.quality-box:hover{
+  transform:translateY(-8px);
+  border-color:var(--gold2);
+  box-shadow:0 22px 60px rgba(212,175,55,.18);
 }
 
 .quality-box h3{
@@ -404,7 +494,6 @@ section{padding:65px 0;}
 .contact-box h2{
   font-size:42px;
   margin-bottom:15px;
-  color:white;
 }
 
 .contact-box p{
@@ -443,7 +532,7 @@ input,select,textarea{
   background:#07152f;
   color:white;
   outline:none;
-  font-family:Poppins,sans-serif;
+  font-family:Poppins,Arial,sans-serif;
   -webkit-user-select:text;
   user-select:text;
 }
@@ -455,11 +544,6 @@ input:focus,select:focus,textarea:focus{
 
 textarea{min-height:100px;}
 
-button{
-  border:0;
-  cursor:pointer;
-}
-
 form button{
   width:100%;
   padding:14px;
@@ -468,6 +552,8 @@ form button{
   color:#000;
   font-weight:900;
   transition:.3s;
+  border:0;
+  cursor:pointer;
 }
 
 form button:hover{
@@ -484,167 +570,43 @@ footer{
 
 @media(max-width:900px){
   nav ul{display:none;}
-
-  .hero{
-    grid-template-columns:1fr;
-  }
-
-  .cat-grid,.product-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .gallery-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .quality-grid,.contact-box{
-    grid-template-columns:1fr;
-  }
-
-  .category-top{
-    display:block;
-  }
-
-  .back-btn{
-    margin-top:15px;
-  }
+  .hero,.detail-box{grid-template-columns:1fr;}
+  .cat-grid,.product-grid,.gallery-grid{grid-template-columns:repeat(2,1fr);}
+  .quality-grid,.contact-box{grid-template-columns:1fr;}
+  .category-top{display:block;}
+  .back-btn{margin-top:15px;}
 }
 
 @media(max-width:600px){
-  section{
-    padding:48px 0;
-  }
-
-  .products{
-    padding-bottom:22px;
-  }
-
-  .gallery{
-    padding-top:22px;
-  }
-
-  .nav{
-    height:64px;
-    width:94%;
-  }
-
-  .logo img{
-    width:42px;
-    height:42px;
-  }
-
-  .logo strong{
-    font-size:16px;
-  }
-
-  .logo span{
-    font-size:8px;
-  }
-
-  .hero{
-    padding:45px 0;
-  }
-
-  .hero h1{
-    font-size:38px;
-  }
-
-  .hero-img img{
-    height:320px;
-  }
-
-  .cat-card img,.product-card img{
-    height:150px;
-  }
-
-  .gallery-item img{
-    height:175px;
-  }
-
-  .section-title{
-    margin-bottom:28px;
-  }
-
-  .section-title h2,.category-top h2{
-    font-size:34px;
-  }
-
-  .cat-card h3,.product-info h3{
-    font-size:18px;
-  }
-
-  .cat-card p,.product-info p{
-    font-size:11px;
-  }
-
-  .cat-card div,.product-info{
-    padding:13px;
-  }
-
-  .order-btn{
-    font-size:12px;
-    padding:9px 12px;
-  }
-
-  .small-btn{
-    font-size:11px;
-    padding:9px 12px;
-  }
-
-  .category-heading{
-    display:block;
-  }
-
-  .category-heading .small-btn{
-    margin-top:13px;
-  }
-
-  .contact-box{
-    padding:24px 18px;
-    border-radius:24px;
-    gap:22px;
-  }
-
-  .contact-box h2{
-    font-size:32px;
-    text-align:center;
-  }
-
-  .contact-box p{
-    font-size:14px;
-    text-align:center;
-    margin-bottom:16px;
-  }
-
-  .contact-list{
-    gap:8px;
-  }
-
-  .contact-list div{
-    font-size:13px;
-    padding:10px 12px;
-    text-align:center;
-  }
-
-  form{
-    padding:18px;
-    border-radius:20px;
-  }
-
-  input,select,textarea{
-    padding:12px;
-    font-size:13px;
-    min-height:46px;
-  }
-
-  textarea{
-    min-height:90px;
-  }
-
-  form button{
-    padding:13px;
-    font-size:14px;
-  }
+  section{padding:48px 0;}
+  .products{padding-bottom:22px;}
+  .gallery{padding-top:22px;}
+  .nav{height:64px;width:94%;}
+  .logo img{width:42px;height:42px;}
+  .logo strong{font-size:16px;}
+  .logo span{font-size:8px;}
+  .hero{padding:45px 0;}
+  .hero h1{font-size:38px;}
+  .hero-img img{height:320px;}
+  .cat-card img,.product-card img{height:150px;}
+  .gallery-item img{height:175px;}
+  .section-title h2,.category-top h2{font-size:34px;}
+  .cat-card h3,.product-info h3{font-size:18px;}
+  .cat-card p,.product-info p{font-size:11px;}
+  .cat-card div,.product-info{padding:13px;}
+  .order-btn{font-size:12px;padding:9px 12px;}
+  .small-btn{font-size:11px;padding:9px 12px;}
+  .category-heading{display:block;}
+  .category-heading .small-btn{margin-top:13px;}
+  .slider-main img{height:330px;}
+  .thumbs img{height:58px;}
+  .detail-info{padding:22px;}
+  .detail-info h2{font-size:30px;}
+  .detail-price{font-size:24px;}
+  .contact-box{padding:24px 18px;border-radius:24px;}
+  .contact-box h2{font-size:32px;text-align:center;}
+  .contact-box p{font-size:14px;text-align:center;}
+  .contact-list div{font-size:13px;text-align:center;}
 }
 </style>
 </head>
@@ -728,7 +690,7 @@ footer{
     <div class="section-title">
       <span>Products</span>
       <h2>Our Product Collection</h2>
-      <p>Niche har category ke products show honge.</p>
+      <p>Product par click karke full details, images aur price dekhein.</p>
     </div>
 
     <div id="allProductsGrid"></div>
@@ -744,12 +706,12 @@ footer{
     </div>
 
     <div class="gallery-grid">
-      <div class="gallery-item"><img src="img.png/hero.png" alt="Gallery 1"></div>
-      <div class="gallery-item"><img src="img.png/hero.png" alt="Gallery 2"></div>
-      <div class="gallery-item"><img src="img.png/hero.png" alt="Gallery 3"></div>
-      <div class="gallery-item"><img src="img.png/hero.png" alt="Gallery 4"></div>
-      <div class="gallery-item"><img src="img.png/hero.png" alt="Gallery 5"></div>
-      <div class="gallery-item"><img src="img.png/hero.png" alt="Gallery 6"></div>
+      <div class="gallery-item"><img src="img.png/hero.png"></div>
+      <div class="gallery-item"><img src="img.png/hero.png"></div>
+      <div class="gallery-item"><img src="img.png/hero.png"></div>
+      <div class="gallery-item"><img src="img.png/hero.png"></div>
+      <div class="gallery-item"><img src="img.png/hero.png"></div>
+      <div class="gallery-item"><img src="img.png/hero.png"></div>
     </div>
   </div>
 </section>
@@ -762,9 +724,20 @@ footer{
     </div>
 
     <div class="quality-grid">
-      <div class="quality-box"><h3>Premium Look</h3><p>Products ghar ko beautiful aur modern feel dete hain.</p></div>
-      <div class="quality-box"><h3>Daily Comfort</h3><p>Daily use ke liye comfortable products.</p></div>
-      <div class="quality-box"><h3>Retail & Bulk</h3><p>Single piece aur bulk orders available.</p></div>
+      <div class="quality-box">
+        <h3>Premium Look</h3>
+        <p>Products ghar ko beautiful aur modern feel dete hain.</p>
+      </div>
+
+      <div class="quality-box">
+        <h3>Daily Comfort</h3>
+        <p>Daily use ke liye comfortable products.</p>
+      </div>
+
+      <div class="quality-box">
+        <h3>Retail & Bulk</h3>
+        <p>Single piece aur bulk orders available.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -774,7 +747,7 @@ footer{
     <div class="contact-box">
       <div>
         <h2>Contact AMJO HOME'S</h2>
-        <p>Catalogue, latest designs, prices aur bulk order ke liye WhatsApp enquiry bhejo.</p>
+        <p>Catalogue, latest designs, prices aur bulk order ke liye WhatsApp order details bhejo.</p>
 
         <div class="contact-list">
           <div>WhatsApp: +91 96464 43256</div>
@@ -806,7 +779,6 @@ footer{
 
 <section id="categoryPage">
   <div class="container">
-
     <div class="category-top">
       <div>
         <span style="color:#f1d77a;font-weight:900;letter-spacing:2px;">CATEGORY PRODUCTS</span>
@@ -818,22 +790,91 @@ footer{
     </div>
 
     <div class="product-grid" id="categoryProducts"></div>
+  </div>
+</section>
 
+<section id="productDetailPage">
+  <div class="container">
+    <div class="category-top">
+      <div>
+        <span style="color:#f1d77a;font-weight:900;letter-spacing:2px;">PRODUCT DETAILS</span>
+        <h2 id="detailTitle">Product Name</h2>
+        <p id="detailShort">Product details</p>
+      </div>
+
+      <button class="back-btn" onclick="backToLastPage()">Back</button>
+    </div>
+
+    <div class="detail-box">
+      <div class="slider">
+        <div class="slider-main">
+          <img id="mainProductImage" src="img.png/hero.png" alt="Product">
+        </div>
+
+        <div class="slider-arrows">
+          <button onclick="changeImage(-1)">‹</button>
+          <button onclick="changeImage(1)">›</button>
+        </div>
+
+        <div class="thumbs" id="thumbImages"></div>
+      </div>
+
+      <div class="detail-info">
+        <span>AMJO HOME'S COLLECTION</span>
+        <h2 id="detailName">Product Name</h2>
+        <div class="detail-price" id="detailPrice">₹999</div>
+        <p id="detailDesc">Product description here.</p>
+
+        <div class="feature-list">
+          <div>✅ Premium design aur beautiful look</div>
+          <div>✅ Home, gifting aur daily use ke liye perfect</div>
+          <div>✅ Latest designs ke liye WhatsApp par contact karein</div>
+          <div>✅ Retail aur bulk order available</div>
+        </div>
+
+        <div class="detail-buttons">
+          <a id="detailWhatsapp" class="btn-main" target="_blank">Order Now On WhatsApp</a>
+          <button class="back-btn" onclick="showHome()">Home</button>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <footer>© 2026 AMJO HOME'S. Bedsheets • Towels • Carpets • Blankets</footer>
 
 <script>
+const whatsappNumber = "919646443256";
+
 const allProducts = {
   bedsheets: {
     title: "Bedsheets",
     desc: "Printed, cotton, designer aur king size bedsheet collection.",
     products: [
-      ["Printed Bedsheet","Premium printed bedsheet for daily home use."],
-      ["Cotton Bedsheet","Soft cotton feel with comfortable fabric."],
-      ["King Size Bedsheet","Large size bedsheet with beautiful design."],
-      ["Designer Bedsheet","Stylish bedsheet for bedroom premium look."]
+      {
+        name:"Printed Bedsheet",
+        desc:"Premium printed bedsheet jo bedroom ko clean aur beautiful look deti hai. Daily use aur gifting dono ke liye perfect.",
+        price:"₹950",
+        images:["img.png/hero.png","img.png/hero.png","img.png/hero.png","img.png/hero.png"]
+      },
+      {
+        name:"Cotton Bedsheet",
+        desc:"Soft cotton feel bedsheet comfortable sleep ke liye. Ghar ke regular use ke liye best choice.",
+        price:"₹999",
+        images:["img.png/hero.png","img.png/hero.png","img.png/hero.png","img.png/hero.png"]
+      },
+      {
+        name:"King Size Bedsheet",
+        desc:"Large size bedsheet double bed ke liye. Beautiful design aur premium bedroom look ke saath.",
+        price:"₹1199",
+        images:["img.png/hero.png","img.png/hero.png","img.png/hero.png","img.png/hero.png"]
+      },
+      {
+        name:"Designer Bedsheet",
+        desc:"Stylish designer bedsheet jo room ko modern aur premium touch deti hai.",
+        price:"₹1299",
+        images:["img.png/hero.png","img.png/hero.png","img.png/hero.png","img.png/hero.png"]
+      }
     ]
   },
 
@@ -841,10 +882,30 @@ const allProducts = {
     title: "Towels",
     desc: "Bath towel, hand towel, face towel aur towel set collection.",
     products: [
-      ["Bath Towel","Soft bath towel for daily fresh comfort."],
-      ["Hand Towel","Premium hand towel for home and gifting."],
-      ["Face Towel","Soft and gentle towel for daily skincare use."],
-      ["Towel Set","Beautiful towel set for family and gifting."]
+      {
+        name:"Bath Towel",
+        desc:"Soft bath towel fresh feel aur comfortable use ke liye. Home aur gifting ke liye good option.",
+        price:"₹399",
+        images:["img.png/hero.png","img.png/hero.png","img.png/hero.png","img.png/hero.png"]
+      },
+      {
+        name:"Hand Towel",
+        desc:"Premium hand towel kitchen, washroom aur daily home use ke liye.",
+        price:"₹149",
+        images:["img.png/hero.png","img.png/hero.png","img.png/hero.png","img.png/hero.png"]
+      },
+      {
+        name:"Face Towel",
+        desc:"Soft face towel daily routine ke liye. Simple, useful aur comfortable.",
+        price:"₹99",
+        images:["img.png/hero.png","img.png/hero.png","img.png/hero.png","img.png/hero.png"]
+      },
+      {
+        name:"Towel Set",
+        desc:"Beautiful towel set family use aur gifting ke liye. Multiple towels combo available.",
+        price:"₹699",
+        images:["img.png/hero.png","img.png/hero.png","img.png/hero.png","img.png/hero.png"]
+      }
     ]
   },
 
@@ -852,10 +913,30 @@ const allProducts = {
     title: "Blankets",
     desc: "Warm, cozy and comfortable blanket collection.",
     products: [
-      ["Winter Blanket","Warm blanket for comfortable winter nights."],
-      ["Soft Blanket","Soft feel blanket with premium comfort."],
-      ["Double Blanket","Large size blanket for double bed comfort."],
-      ["Designer Blanket","Stylish blanket for home and gifting purpose."]
+      {
+        name:"Winter Blanket",
+        desc:"Warm winter blanket comfortable nights ke liye. Soft touch aur cozy feel.",
+        price:"₹1499",
+        images:["img.png/hero.png","img.png/hero.png","img.png/hero.png","img.png/hero.png"]
+      },
+      {
+        name:"Soft Blanket",
+        desc:"Soft feel blanket jo daily comfort aur premium look dono deti hai.",
+        price:"₹1299",
+        images:["img.png/hero.png","img.png/hero.png","img.png/hero.png","img.png/hero.png"]
+      },
+      {
+        name:"Double Blanket",
+        desc:"Large double bed blanket family comfort ke liye. Warm aur stylish option.",
+        price:"₹1799",
+        images:["img.png/hero.png","img.png/hero.png","img.png/hero.png","img.png/hero.png"]
+      },
+      {
+        name:"Designer Blanket",
+        desc:"Designer blanket home aur gifting purpose ke liye beautiful choice.",
+        price:"₹1899",
+        images:["img.png/hero.png","img.png/hero.png","img.png/hero.png","img.png/hero.png"]
+      }
     ]
   },
 
@@ -863,22 +944,53 @@ const allProducts = {
     title: "Carpets",
     desc: "Bedroom, bedside and living room carpets collection.",
     products: [
-      ["Bedside Carpet","Perfect carpet for bed side and room decoration."],
-      ["Room Carpet","Stylish carpet for bedroom and living space."],
-      ["Premium Carpet","Elegant carpet to give home a premium look."],
-      ["Designer Carpet","Beautiful design carpet for modern home decor."]
+      {
+        name:"Bedside Carpet",
+        desc:"Bed side ke liye perfect carpet jo room ko neat aur premium look deta hai.",
+        price:"₹499",
+        images:["img.png/hero.png","img.png/hero.png","img.png/hero.png","img.png/hero.png"]
+      },
+      {
+        name:"Room Carpet",
+        desc:"Bedroom aur living space ke liye stylish carpet. Room decor ke liye best.",
+        price:"₹899",
+        images:["img.png/hero.png","img.png/hero.png","img.png/hero.png","img.png/hero.png"]
+      },
+      {
+        name:"Premium Carpet",
+        desc:"Elegant premium carpet jo home ko classy look deta hai.",
+        price:"₹1199",
+        images:["img.png/hero.png","img.png/hero.png","img.png/hero.png","img.png/hero.png"]
+      },
+      {
+        name:"Designer Carpet",
+        desc:"Beautiful design carpet modern home decor ke liye. Bedroom aur drawing room dono ke liye suitable.",
+        price:"₹999",
+        images:["img.png/hero.png","img.png/hero.png","img.png/hero.png","img.png/hero.png"]
+      }
     ]
   }
 };
 
-function productCard(name, desc){
+let currentProduct = null;
+let currentImageIndex = 0;
+
+function makeWhatsAppLink(product){
+  const text = `Hello AMJO HOME'S, I want to order this product:%0A%0AProduct: ${encodeURIComponent(product.name)}%0APrice: ${encodeURIComponent(product.price)}%0APlease send me more details.`;
+  return `https://wa.me/${whatsappNumber}?text=${text}`;
+}
+
+function productCard(product, cat, index){
   return `
-  <div class="product-card">
-    <img src="img.png/hero.png" alt="${name}">
+  <div class="product-card" onclick="openProduct('${cat}', ${index})">
+    <img src="${product.images[0]}" alt="${product.name}">
     <div class="product-info">
-      <h3>${name}</h3>
-      <p>${desc}</p>
-      <a class="small-btn" target="_blank" href="https://wa.me/919646443256?text=Hello%20AMJO%20HOME'S,%20I%20want%20details%20about%20${encodeURIComponent(name)}">Enquire Now</a>
+      <h3>${product.name}</h3>
+      <p>${product.desc.substring(0,75)}...</p>
+      <div class="price">${product.price}</div>
+      <div class="card-actions">
+        <a class="small-btn" onclick="event.stopPropagation()" target="_blank" href="${makeWhatsAppLink(product)}">Order Now</a>
+      </div>
     </div>
   </div>`;
 }
@@ -899,7 +1011,7 @@ function loadAllProducts(){
         <span class="small-btn" onclick="openCategory('${cat}')">View ${category.title}</span>
       </div>
       <div class="product-grid">
-        ${category.products.map(p => productCard(p[0], p[1])).join("")}
+        ${category.products.map((p,i) => productCard(p, cat, i)).join("")}
       </div>
     </div>`;
   });
@@ -911,20 +1023,82 @@ function openCategory(cat){
   const category = allProducts[cat];
 
   document.getElementById("homePage").style.display = "none";
+  document.getElementById("productDetailPage").style.display = "none";
   document.getElementById("categoryPage").style.display = "block";
 
   document.getElementById("categoryTitle").innerText = category.title;
   document.getElementById("categoryDesc").innerText = category.desc;
 
   document.getElementById("categoryProducts").innerHTML =
-    category.products.map(p => productCard(p[0], p[1])).join("");
+    category.products.map((p,i) => productCard(p, cat, i)).join("");
 
   window.scrollTo(0,0);
+}
+
+function openProduct(cat, index){
+  currentProduct = allProducts[cat].products[index];
+  currentImageIndex = 0;
+
+  document.getElementById("homePage").style.display = "none";
+  document.getElementById("categoryPage").style.display = "none";
+  document.getElementById("productDetailPage").style.display = "block";
+
+  document.getElementById("detailTitle").innerText = currentProduct.name;
+  document.getElementById("detailShort").innerText = currentProduct.desc;
+  document.getElementById("detailName").innerText = currentProduct.name;
+  document.getElementById("detailPrice").innerText = currentProduct.price;
+  document.getElementById("detailDesc").innerText = currentProduct.desc;
+  document.getElementById("detailWhatsapp").href = makeWhatsAppLink(currentProduct);
+
+  loadThumbs();
+  loadDetailImage();
+
+  window.scrollTo(0,0);
+}
+
+function loadDetailImage(){
+  document.getElementById("mainProductImage").src = currentProduct.images[currentImageIndex];
+
+  document.querySelectorAll(".thumbs img").forEach((img, i) => {
+    img.classList.toggle("active", i === currentImageIndex);
+  });
+}
+
+function loadThumbs(){
+  const thumbs = currentProduct.images.map((img, i) => {
+    return `<img src="${img}" class="${i === 0 ? 'active' : ''}" onclick="selectImage(${i})">`;
+  }).join("");
+
+  document.getElementById("thumbImages").innerHTML = thumbs;
+}
+
+function changeImage(direction){
+  currentImageIndex += direction;
+
+  if(currentImageIndex < 0){
+    currentImageIndex = currentProduct.images.length - 1;
+  }
+
+  if(currentImageIndex >= currentProduct.images.length){
+    currentImageIndex = 0;
+  }
+
+  loadDetailImage();
+}
+
+function selectImage(index){
+  currentImageIndex = index;
+  loadDetailImage();
+}
+
+function backToLastPage(){
+  showHome();
 }
 
 function showHome(){
   document.getElementById("homePage").style.display = "block";
   document.getElementById("categoryPage").style.display = "none";
+  document.getElementById("productDetailPage").style.display = "none";
   window.scrollTo(0,0);
 }
 
@@ -936,10 +1110,9 @@ function sendWhatsApp(event){
   const product = document.getElementById('product').value;
   const message = document.getElementById('message').value;
 
-  const yourWhatsAppNumber = '919646443256';
-  const text = `Hello AMJO HOME'S,%0A%0AName: ${name}%0AMobile: ${phone}%0AProduct: ${product}%0AMessage: ${message}`;
+  const text = `Hello AMJO HOME'S,%0A%0AName: ${encodeURIComponent(name)}%0AMobile: ${encodeURIComponent(phone)}%0AProduct: ${encodeURIComponent(product)}%0AMessage: ${encodeURIComponent(message)}`;
 
-  window.open(`https://wa.me/${yourWhatsAppNumber}?text=${text}`, '_blank');
+  window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
 }
 
 loadAllProducts();
