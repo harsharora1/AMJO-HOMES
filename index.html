@@ -4,8 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AMJO HOME'S — Premium Gifting Hampers</title>
+
+    <!-- Preload only hero images -->
     <link rel="preload" as="image" href="img.png/hero.png" />
     <link rel="preload" as="image" href="img.png/hero1.png" />
+
+    <!-- Font with display swap -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
@@ -39,6 +43,7 @@
             display: block;
             pointer-events: none;
         }
+        /* use content-visibility only for heavy sections */
         section {
             content-visibility: auto;
             contain-intrinsic-size: 900px;
@@ -83,6 +88,7 @@
             position: relative;
             z-index: 1000;
             backdrop-filter: blur(4px);
+            will-change: opacity;
         }
         .top-bar span {
             display: inline-block;
@@ -108,6 +114,7 @@
             backdrop-filter: blur(20px) saturate(1.3);
             -webkit-backdrop-filter: blur(20px) saturate(1.3);
             transition: background 0.4s, box-shadow 0.4s;
+            will-change: background, box-shadow;
         }
         header.scrolled {
             background: rgba(2, 6, 23, 0.96);
@@ -150,6 +157,7 @@
             padding: 3px;
             box-shadow: 0 0 30px rgba(212, 175, 55, 0.12);
             transition: transform 0.4s ease, box-shadow 0.4s ease;
+            will-change: transform;
         }
         .logo:hover img {
             transform: scale(1.05) rotate(-1deg);
@@ -217,6 +225,7 @@
             box-shadow: 0 4px 24px rgba(212, 175, 55, 0.25);
             position: relative;
             overflow: hidden;
+            will-change: transform, box-shadow;
         }
         .order-btn-nav::before {
             content: '';
@@ -263,6 +272,7 @@
             position: relative;
             overflow: hidden;
             box-shadow: 0 4px 20px rgba(212, 175, 55, 0.15);
+            will-change: transform, box-shadow;
         }
         .btn-gold::after,
         .btn-main::after,
@@ -312,6 +322,7 @@
             position: relative;
             overflow: hidden;
             box-shadow: 0 4px 20px rgba(212, 175, 55, 0.05);
+            will-change: transform, box-shadow;
         }
         .btn-outline::before {
             content: '';
@@ -447,6 +458,7 @@
             box-shadow: 0 20px 70px rgba(0, 0, 0, 0.3), 0 0 80px rgba(212, 175, 55, 0.04);
             position: relative;
             z-index: 1;
+            will-change: transform, box-shadow;
         }
         .hero-img::after {
             content: '';
@@ -460,6 +472,7 @@
             height: 480px;
             object-fit: cover;
             transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform;
         }
         .hero-img:hover img {
             transform: scale(1.03);
@@ -477,6 +490,7 @@
             filter: blur(100px);
             pointer-events: none;
             z-index: 0;
+            will-change: transform;
         }
         .orb-1 {
             width: 320px;
@@ -580,6 +594,7 @@
             overflow: hidden;
             cursor: pointer;
             box-shadow: 0 8px 36px rgba(0, 0, 0, 0.15);
+            will-change: transform, box-shadow;
         }
         .hamper-card::before {
             content: '';
@@ -686,6 +701,7 @@
             display: flex;
             flex-direction: column;
             box-shadow: 0 8px 36px rgba(0, 0, 0, 0.12);
+            will-change: transform, box-shadow;
         }
         .product-card:hover {
             transform: translateY(-10px) scale(1.005);
@@ -697,6 +713,7 @@
             object-fit: cover;
             background: #fff;
             transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform;
         }
         .product-card:hover img {
             transform: scale(1.04);
@@ -786,6 +803,7 @@
             flex: 1;
             position: relative;
             overflow: hidden;
+            will-change: transform, box-shadow;
         }
         .product-info .card-actions .add-btn::after {
             content: '';
@@ -884,6 +902,7 @@
             text-align: center;
             transition: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             box-shadow: 0 8px 36px rgba(0, 0, 0, 0.08);
+            will-change: transform, box-shadow;
         }
         .quality-box:hover {
             transform: translateY(-10px) scale(1.01);
@@ -922,6 +941,7 @@
             gap: 14px;
             border: 1px solid rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(6px);
+            will-change: transform, box-shadow;
         }
         .cart-float:hover {
             transform: scale(1.08) translateY(-4px);
@@ -971,6 +991,7 @@
             flex-direction: column;
             padding: 0;
             box-shadow: -20px 0 80px rgba(0, 0, 0, 0.5);
+            will-change: right;
         }
         .cart-sidebar.open {
             right: 0;
@@ -1194,6 +1215,7 @@
             transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             position: relative;
             overflow: hidden;
+            will-change: transform, box-shadow;
         }
         .cart-footer .checkout-btn::after {
             content: '';
@@ -1239,6 +1261,7 @@
             overflow: hidden;
             transition: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             box-shadow: 0 8px 36px rgba(0, 0, 0, 0.08);
+            will-change: transform, box-shadow;
         }
         .gallery-item:hover {
             transform: translateY(-10px) scale(1.005);
@@ -1250,6 +1273,7 @@
             object-fit: cover;
             background: #fff;
             transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform;
         }
         .gallery-item:hover img {
             transform: scale(1.04);
@@ -1361,6 +1385,7 @@
             font-size: 16px;
             position: relative;
             overflow: hidden;
+            will-change: transform, box-shadow;
         }
         form button::after {
             content: '';
@@ -2280,7 +2305,7 @@
     </footer>
 
     <!-- ============================================================ -->
-    <!-- ===== JAVASCRIPT (unchanged – only visual CSS changed) ===== -->
+    <!-- ===== JAVASCRIPT (optimized) ================================ -->
     <script>
         history.scrollRestoration = "manual";
         const whatsappNumber = "919646432566";
@@ -2496,25 +2521,27 @@
           `).join('');
         }
 
-        // ─── RENDER PRODUCTS ──────────────────────────────────────────
+        // ─── RENDER PRODUCTS (optimized – uses documentFragment) ──────
         function renderAllProducts() {
             const grid = document.getElementById('allProductsGrid');
-            let html = '';
+            const fragment = document.createDocumentFragment();
             Object.keys(allProducts).forEach(cat => {
                 const category = allProducts[cat];
-                html += `
-              <div class="product-category">
-                <div class="category-heading">
-                  <div><h3>${category.title}</h3><p>${category.desc}</p></div>
-                  <span class="small-btn" onclick="openCategory('${cat}',true)"><span>View All</span></span>
-                </div>
-                <div class="product-grid">
-                  ${category.products.map((p,i) => productCardHTML(cat,i,p)).join('')}
-                </div>
+                const wrapper = document.createElement('div');
+                wrapper.className = 'product-category';
+                wrapper.innerHTML = `
+              <div class="category-heading">
+                <div><h3>${category.title}</h3><p>${category.desc}</p></div>
+                <span class="small-btn" onclick="openCategory('${cat}',true)"><span>View All</span></span>
+              </div>
+              <div class="product-grid" data-category="${cat}">
+                ${category.products.map((p,i) => productCardHTML(cat,i,p)).join('')}
               </div>
             `;
+                fragment.appendChild(wrapper);
             });
-            grid.innerHTML = html;
+            grid.innerHTML = '';
+            grid.appendChild(fragment);
         }
 
         function productCardHTML(cat, idx, p) {
@@ -2522,7 +2549,7 @@
             const inCart = cart.find(item => item.id === id);
             const qty = inCart ? inCart.quantity : 0;
             return `
-            <div class="product-card" onclick="openProduct('${cat}',${idx},true)">
+            <div class="product-card" data-product-id="${id}" onclick="openProduct('${cat}',${idx},true)">
               <img src="${p.images[0]}" alt="${p.name}" loading="lazy" decoding="async" />
               <div class="product-info">
                 <h3>${p.name}</h3>
@@ -2544,7 +2571,13 @@
         function renderCategoryProducts(cat) {
             const category = allProducts[cat];
             const grid = document.getElementById('categoryProducts');
-            grid.innerHTML = category.products.map((p, i) => productCardHTML(cat, i, p)).join('');
+            const fragment = document.createDocumentFragment();
+            const wrapper = document.createElement('div');
+            wrapper.className = 'product-grid';
+            wrapper.innerHTML = category.products.map((p, i) => productCardHTML(cat, i, p)).join('');
+            fragment.appendChild(wrapper);
+            grid.innerHTML = '';
+            grid.appendChild(fragment);
         }
 
         // ─── CART FUNCTIONS ────────────────────────────────────────────
@@ -2574,8 +2607,26 @@
                     }
                 }
             }
+            // Update only the affected product card + cart UI
+            updateSingleProduct(id);
             updateCartUI();
-            updateProductButtons();
+        }
+
+        function updateSingleProduct(id) {
+            const inCart = cart.find(item => item.id === id);
+            const qty = inCart ? inCart.quantity : 0;
+            const qtyEl = document.getElementById('qty-' + id);
+            const btnEl = document.getElementById('addbtn-' + id);
+            if (qtyEl) qtyEl.textContent = qty;
+            if (btnEl) {
+                if (qty > 0) {
+                    btnEl.classList.add('in-cart');
+                    btnEl.innerHTML = '<span>✔ In Cart</span>';
+                } else {
+                    btnEl.classList.remove('in-cart');
+                    btnEl.innerHTML = '<span>Add</span>';
+                }
+            }
         }
 
         function addHamperToCart(hamperId) {
@@ -2602,7 +2653,6 @@
             }
 
             updateCartUI();
-            updateProductButtons();
             openCart();
             showToast('🎁 ' + hamper.name + ' added to your hamper!');
         }
@@ -2610,19 +2660,10 @@
         function removeCartItem(id) {
             cart = cart.filter(item => item.id !== id);
             updateCartUI();
-            updateProductButtons();
-        }
-
-        function updateProductButtons() {
-            renderAllProducts();
-            const catPage = document.getElementById('categoryPage');
-            if (catPage.style.display !== 'none') {
-                const cat = document.getElementById('categoryTitle').innerText;
-                const catKey = Object.keys(allProducts).find(k => allProducts[k].title === cat);
-                if (catKey) renderCategoryProducts(catKey);
+            // Also update product card if it's a regular product
+            if (!id.startsWith('hamper-')) {
+                updateSingleProduct(id);
             }
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            document.getElementById('cartCount').textContent = totalItems;
         }
 
         // ─── DISCOUNT LOGIC ────────────────────────────────────────────
@@ -2676,7 +2717,7 @@
                 }
                 html += `
               <div class="cart-item">
-                <img src="${item.image || 'img.png/hero.png'}" alt="${item.name}" />
+                <img src="${item.image || 'img.png/hero.png'}" alt="${item.name}" loading="lazy" decoding="async" />
                 <div class="info">
                   <div class="name">${item.name}</div>
                   <div class="price">₹${price} × ${qty} = ₹${(price*qty).toFixed(0)}</div>
@@ -2750,7 +2791,9 @@
                 }
             }
             updateCartUI();
-            updateProductButtons();
+            if (!id.startsWith('hamper-')) {
+                updateSingleProduct(id);
+            }
         }
 
         // ─── CART TOGGLE ──────────────────────────────────────────────
@@ -2973,22 +3016,27 @@
             if (e.key === 'ArrowRight') modalChangeImage(e, 1);
         });
 
-        // ─── HEADER SCROLL EFFECT ──────────────────────────────────────
+        // ─── HEADER SCROLL EFFECT (debounced) ──────────────────────────
         let headerScrolled = false;
+        let scrollTimeout;
 
         function handleScroll() {
-            const header = document.getElementById('mainHeader');
-            if (window.scrollY > 40) {
-                if (!headerScrolled) {
-                    header.classList.add('scrolled');
-                    headerScrolled = true;
+            if (scrollTimeout) return;
+            scrollTimeout = requestAnimationFrame(() => {
+                const header = document.getElementById('mainHeader');
+                if (window.scrollY > 40) {
+                    if (!headerScrolled) {
+                        header.classList.add('scrolled');
+                        headerScrolled = true;
+                    }
+                } else {
+                    if (headerScrolled) {
+                        header.classList.remove('scrolled');
+                        headerScrolled = false;
+                    }
                 }
-            } else {
-                if (headerScrolled) {
-                    header.classList.remove('scrolled');
-                    headerScrolled = false;
-                }
-            }
+                scrollTimeout = null;
+            });
         }
 
         window.addEventListener('scroll', handleScroll, { passive: true });
@@ -3088,3 +3136,4 @@
 
 </body>
 </html>
+```
