@@ -6,15 +6,11 @@
     <title>AMJO HOME'S — Premium Gifting Hampers</title>
     <meta name="description" content="Premium gifting hampers with bedsheets, blankets, towels & carpets. Build your own hamper or choose ready-made. Free gift wrap & pan India delivery." />
 
-    <!-- DNS & Preconnect -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <!-- Preload critical hero image -->
     <link rel="preload" as="image" href="img.png/hero.png" fetchpriority="high" />
 
-    <!-- Font with display swap -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <noscript>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
@@ -30,7 +26,6 @@
             -webkit-user-select: none;
             user-select: none;
         }
-        /* ─── IMPORTANT: Remove smooth scroll for back button instant jump ─── */
         html {
             scroll-behavior: auto;
         }
@@ -78,7 +73,6 @@
             border-radius: 10px;
         }
 
-        /* ── TOP BAR ── */
         .top-bar {
             background: #000;
             color: var(--gold2);
@@ -105,7 +99,6 @@
             }
         }
 
-        /* ── HEADER ── */
         header {
             background: rgba(2, 6, 23, 0.88);
             border-bottom: 1px solid var(--border);
@@ -241,7 +234,6 @@
             box-shadow: 0 8px 32px rgba(212, 175, 55, 0.30);
         }
 
-        /* ── BUTTONS ── */
         .btn-gold,
         .btn-main,
         .btn-outline,
@@ -349,7 +341,6 @@
             border-color: var(--gold);
         }
 
-        /* ── HERO ── */
         .hero {
             width: min(1150px, 92%);
             margin: auto;
@@ -486,7 +477,6 @@
             }
         }
 
-        /* ── SECTIONS ── */
         section {
             padding: 50px 0;
             position: relative;
@@ -538,7 +528,6 @@
             font-size: 15px;
         }
 
-        /* ── HAMPERS ── */
         .hamper-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -629,7 +618,6 @@
             border-radius: 40px;
         }
 
-        /* ── PRODUCTS (grid on home) ── */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -809,7 +797,6 @@
             margin-bottom: 0;
         }
 
-        /* ── QUALITY ── */
         .quality-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -843,7 +830,6 @@
             font-size: 13px;
         }
 
-        /* ── GALLERY ── */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -876,7 +862,6 @@
             transform: scale(1.03);
         }
 
-        /* ── CATEGORY / DETAIL PAGES ── */
         .category-top {
             display: flex;
             justify-content: space-between;
@@ -903,7 +888,6 @@
             text-transform: uppercase;
         }
 
-        /* ── ENHANCED CATEGORY PAGE – ROW LAYOUT ── */
         .category-row-grid {
             display: flex;
             flex-direction: column;
@@ -1062,7 +1046,6 @@
             display: none;
         }
 
-        /* ── DETAIL PAGE ── */
         .detail-box {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -1214,40 +1197,42 @@
             min-width: 120px;
         }
 
-        /* ── CART ── */
+        /* ─── CART FLOATING BUTTON (DEFAULT) ─── */
         .cart-float {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 24px;
+            right: 24px;
             z-index: 9998;
             background: linear-gradient(135deg, var(--gold), var(--gold2));
             color: #000;
             border: 0;
             border-radius: 60px;
-            padding: 10px 20px;
+            padding: 12px 24px;
             font-weight: 900;
-            font-size: 13px;
+            font-size: 15px;
             cursor: pointer;
-            box-shadow: 0 10px 48px rgba(212, 175, 55, 0.18);
+            box-shadow: 0 10px 48px rgba(212, 175, 55, 0.25);
             transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             display: flex;
             align-items: center;
-            gap: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.04);
+            gap: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            min-height: 54px;
         }
         .cart-float:hover {
             transform: scale(1.04) translateY(-2px);
-            box-shadow: 0 14px 56px rgba(212, 175, 55, 0.25);
+            box-shadow: 0 14px 56px rgba(212, 175, 55, 0.30);
         }
         .cart-float .badge {
             background: #000;
             color: var(--gold2);
             border-radius: 40px;
-            padding: 0 12px;
-            font-size: 12px;
+            padding: 0 14px;
+            font-size: 14px;
             font-weight: 800;
-            min-width: 24px;
+            min-width: 28px;
             text-align: center;
+            line-height: 28px;
         }
 
         .cart-overlay {
@@ -1515,7 +1500,6 @@
             display: none;
         }
 
-        /* ── FULL IMAGE MODAL ── */
         .full-image-modal {
             display: none;
             position: fixed;
@@ -1623,7 +1607,6 @@
             right: 16px;
         }
 
-        /* ── TOAST ── */
         .toast-container {
             position: fixed;
             bottom: 72px;
@@ -1664,7 +1647,6 @@
             transition: 0.3s ease;
         }
 
-        /* ── FOOTER ── */
         footer {
             background: #000;
             text-align: center;
@@ -1699,7 +1681,6 @@
             color: var(--gold2);
         }
 
-        /* ── RESPONSIVE ── */
         @media (max-width:1024px) {
             .hero h1 {
                 font-size: 42px;
@@ -1807,7 +1788,6 @@
             }
         }
 
-        /* ===== ENHANCED MOBILE RESPONSIVE ===== */
         @media (max-width:768px) {
             .product-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -1908,6 +1888,24 @@
                 padding: 8px 14px;
             }
 
+            /* ─── MOBILE: BIGGER CART BUTTON ─── */
+            .cart-float {
+                padding: 14px 22px;
+                font-size: 17px;
+                min-height: 62px;
+                bottom: 18px;
+                right: 18px;
+                gap: 14px;
+                border-radius: 50px;
+                box-shadow: 0 12px 48px rgba(212, 175, 55, 0.30);
+            }
+            .cart-float .badge {
+                font-size: 16px;
+                min-width: 32px;
+                line-height: 32px;
+                padding: 0 16px;
+            }
+
             .product-grid {
                 grid-template-columns: 1fr 1fr;
                 gap: 14px;
@@ -2004,18 +2002,6 @@
                 min-width: 80px;
                 padding: 8px 14px;
                 font-size: 11px;
-            }
-            .cart-float {
-                padding: 8px 14px;
-                font-size: 11px;
-                bottom: 12px;
-                right: 12px;
-                gap: 6px;
-            }
-            .cart-float .badge {
-                font-size: 10px;
-                padding: 0 8px;
-                min-width: 20px;
             }
             .cart-sidebar {
                 width: 100vw;
@@ -2187,6 +2173,20 @@
             .nav {
                 height: 62px;
             }
+            .cart-float {
+                padding: 12px 18px;
+                font-size: 15px;
+                min-height: 56px;
+                bottom: 14px;
+                right: 14px;
+                gap: 10px;
+            }
+            .cart-float .badge {
+                font-size: 14px;
+                min-width: 28px;
+                line-height: 28px;
+                padding: 0 12px;
+            }
         }
 
         @media (max-width:400px) {
@@ -2241,6 +2241,20 @@
             .nav {
                 height: 58px;
             }
+            .cart-float {
+                padding: 10px 14px;
+                font-size: 13px;
+                min-height: 48px;
+                bottom: 12px;
+                right: 12px;
+                gap: 8px;
+            }
+            .cart-float .badge {
+                font-size: 12px;
+                min-width: 24px;
+                line-height: 24px;
+                padding: 0 10px;
+            }
         }
 
         @media (max-width:360px) {
@@ -2283,15 +2297,28 @@
             .nav {
                 height: 54px;
             }
+            .cart-float {
+                padding: 8px 12px;
+                font-size: 12px;
+                min-height: 42px;
+                bottom: 10px;
+                right: 10px;
+                gap: 6px;
+                border-radius: 40px;
+            }
+            .cart-float .badge {
+                font-size: 10px;
+                min-width: 20px;
+                line-height: 20px;
+                padding: 0 8px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== TOP BAR ===== -->
     <div class="top-bar"><span>🎁 AMJO HOME'S — Premium Gifting Hampers • Build Your Own • Ready-Made • Free Gift Wrap</span></div>
 
-    <!-- ===== HEADER ===== -->
     <header id="mainHeader">
         <div class="nav">
             <a href="#" class="logo" onclick="goHome(event)">
@@ -2313,10 +2340,8 @@
         </div>
     </header>
 
-    <!-- ===== HOME PAGE ===== -->
     <main id="homePage">
 
-        <!-- HERO -->
         <section class="hero" id="heroSection">
             <div class="orb orb-1"></div>
             <div class="orb orb-2"></div>
@@ -2334,7 +2359,6 @@
             </div>
         </section>
 
-        <!-- READY-MADE HAMPERS -->
         <section class="categories" id="hampers">
             <div class="container">
                 <div class="section-title">
@@ -2346,7 +2370,6 @@
             </div>
         </section>
 
-        <!-- PRODUCTS (Build Your Own) -->
         <section class="products" id="products">
             <div class="container">
                 <div class="section-title">
@@ -2358,7 +2381,6 @@
             </div>
         </section>
 
-        <!-- QUALITY -->
         <section class="quality" id="quality">
             <div class="container">
                 <div class="section-title">
@@ -2373,7 +2395,6 @@
             </div>
         </section>
 
-        <!-- GALLERY -->
         <section class="gallery" id="gallery">
             <div class="container">
                 <div class="section-title">
@@ -2387,7 +2408,6 @@
 
     </main>
 
-    <!-- ===== CATEGORY PAGE ===== -->
     <section id="categoryPage" style="display:none;">
         <div class="container">
             <div class="category-top">
@@ -2402,7 +2422,6 @@
         </div>
     </section>
 
-    <!-- ===== PRODUCT DETAIL PAGE ===== -->
     <section id="productDetailPage" style="display:none;">
         <div class="container">
             <div class="category-top">
@@ -2441,15 +2460,13 @@
         </div>
     </section>
 
-    <!-- ===== CART FLOATING BUTTON ===== -->
+    <!-- BIGGER CART BUTTON ON MOBILE -->
     <button class="cart-float" id="cartFloat" onclick="toggleCart()">
         🛒 Hamper Cart <span class="badge" id="cartCount">0</span>
     </button>
 
-    <!-- ===== CART OVERLAY ===== -->
     <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
 
-    <!-- ===== CART SIDEBAR ===== -->
     <div class="cart-sidebar" id="cartSidebar">
         <div class="cart-header">
             <h2>🧺 Your Hamper</h2>
@@ -2465,7 +2482,6 @@
         </div>
     </div>
 
-    <!-- ===== FULL IMAGE MODAL ===== -->
     <div id="fullImageModal" class="full-image-modal" onclick="closeFullImage(event)">
         <button class="modal-close" onclick="closeFullImage(event)"></button>
         <button class="modal-arrow left" onclick="modalChangeImage(event,-1)"></button>
@@ -2473,7 +2489,6 @@
         <button class="modal-arrow right" onclick="modalChangeImage(event,1)"></button>
     </div>
 
-    <!-- ===== FOOTER ===== -->
     <footer>
         <div>© 2026 <span class="brand">AMJO HOME'S</span> — Premium Gifting Hampers • Bedsheets • Blankets • Towels • Carpets</div>
         <div class="sub">WhatsApp: <span style="color:var(--gold2);">96464-32566</span> &nbsp;|&nbsp; Free Gift Wrap on All Hampers</div>
@@ -2485,12 +2500,9 @@
         </div>
     </footer>
 
-    <!-- ===== TOAST CONTAINER ===== -->
     <div class="toast-container"></div>
 
-    <!-- ===== JAVASCRIPT ===== -->
     <script>
-        // ─── CONFIG ──────────────────────────────────────────────────────
         history.scrollRestoration = "manual";
         const WA_NUMBER = "919646432566";
 
@@ -2498,21 +2510,23 @@
         const scrollPositions = new Map();
         let currentPageId = 'home';
 
-        // Save current scroll position
         function saveScrollPosition(pageId) {
             scrollPositions.set(pageId, window.scrollY);
         }
 
-        // ─── INSTANT SCROLL RESTORE — NO ANIMATION ────────────────────
         function restoreScrollPosition(pageId) {
             const pos = scrollPositions.get(pageId);
             if (pos !== undefined) {
-                // Use behavior: 'instant' to skip any smooth scrolling
                 window.scrollTo({ top: pos, behavior: 'instant' });
                 return true;
             }
             return false;
         }
+
+        // ─── CART HISTORY MANAGEMENT ──────────────────────────────────
+        let cartOpen = false;
+        let isClosingFromPopstate = false;
+        let cartPageUrl = '';
 
         // ─── PRODUCT DATA ──────────────────────────────────────────────
         const IMG_SEED = (name) =>
@@ -2577,7 +2591,6 @@
             }
         };
 
-        // Add image URLs to each product
         Object.keys(allProducts).forEach(cat => {
             allProducts[cat].products.forEach(p => {
                 p.images = [
@@ -2589,7 +2602,6 @@
             });
         });
 
-        // ─── HAMPERS DATA ──────────────────────────────────────────────
         const hampers = [{
             id: "silver",
             name: "Silver Hamper",
@@ -2629,18 +2641,14 @@
             ]
         }];
 
-        // ─── CART STATE ─────────────────────────────────────────────────
         let cart = [];
-        let cartOpen = false;
 
-        // ─── PRODUCT DETAIL STATE ──────────────────────────────────────
         let currentProduct = null;
         let currentImageIndex = 0;
         let modalImageIndex = 0;
         let currentDetailCat = null;
         let currentDetailIdx = null;
 
-        // ─── HELPERS ────────────────────────────────────────────────────
         function getProductId(cat, idx) { return cat + '-' + idx; }
 
         function findProduct(cat, idx) {
@@ -2673,7 +2681,6 @@
             return `https://wa.me/${WA_NUMBER}?text=${text}`;
         }
 
-        // ─── TOAST ─────────────────────────────────────────────────────
         function showToast(msg) {
             const container = document.querySelector('.toast-container');
             const toast = document.createElement('div');
@@ -2686,7 +2693,7 @@
             }, 2200);
         }
 
-        // ─── RENDER HAMPERS ────────────────────────────────────────────
+        // ─── RENDER FUNCTIONS ──────────────────────────────────────────
         function renderHampers() {
             const grid = document.getElementById('hamperGrid');
             grid.innerHTML = hampers.map(h => `
@@ -2701,7 +2708,6 @@
           `).join('');
         }
 
-        // ─── RENDER PRODUCTS (home page) ─────────────────────────────
         function renderAllProducts() {
             const grid = document.getElementById('allProductsGrid');
             const fragment = document.createDocumentFragment();
@@ -2724,7 +2730,6 @@
             grid.appendChild(fragment);
         }
 
-        // ─── PRODUCT CARD HTML ──────────────────────────────────────────
         function productCardHTML(cat, idx, p, isCategoryPage = false, rowLayout = false) {
             const id = getProductId(cat, idx);
             const inCart = cart.find(item => item.id === id);
@@ -2771,584 +2776,6 @@
           `;
         }
 
-        // ─── RENDER CATEGORY PRODUCTS ──────────────────────────────────
         function renderCategoryProducts(cat) {
             const category = allProducts[cat];
-            const grid = document.getElementById('categoryProducts');
-            const html = category.products.map((p, i) =>
-                productCardHTML(cat, i, p, true, true)
-            ).join('');
-            grid.innerHTML = html;
-        }
-
-        // ─── RENDER GALLERY ────────────────────────────────────────────
-        function renderGallery() {
-            const grid = document.getElementById('galleryGrid');
-            const images = [
-                "https://picsum.photos/seed/gallery1/400/260",
-                "https://picsum.photos/seed/gallery2/400/260",
-                "https://picsum.photos/seed/gallery3/400/260",
-                "https://picsum.photos/seed/gallery4/400/260",
-                "https://picsum.photos/seed/gallery5/400/260",
-                "https://picsum.photos/seed/gallery6/400/260"
-            ];
-            grid.innerHTML = images.map((src, i) => `
-            <div class="gallery-item">
-              <img src="${src}" loading="lazy" decoding="async" alt="Gallery ${i+1}" width="400" height="230" />
-            </div>
-          `).join('');
-        }
-
-        // ─── CART FUNCTIONS ────────────────────────────────────────────
-
-        function changeQty(id, delta) {
-            const existing = cart.find(item => item.id === id);
-            if (existing) {
-                const newQty = existing.quantity + delta;
-                if (newQty <= 0) {
-                    cart = cart.filter(item => item.id !== id);
-                } else {
-                    existing.quantity = newQty;
-                }
-            } else {
-                if (delta > 0) {
-                    const info = getProductById(id);
-                    if (info && info.product) {
-                        cart.push({
-                            id: id,
-                            name: info.product.name,
-                            price: info.product.price,
-                            image: info.product.images[0],
-                            quantity: 1,
-                            category: info.cat,
-                            isHamper: false
-                        });
-                    }
-                }
-            }
-            updateSingleProduct(id);
-            updateCartUI();
-        }
-
-        function updateSingleProduct(id) {
-            const inCart = cart.find(item => item.id === id);
-            const qty = inCart ? inCart.quantity : 0;
-            const qtyEl = document.getElementById('qty-' + id);
-            const btnEl = document.getElementById('addbtn-' + id);
-            if (qtyEl) qtyEl.textContent = qty;
-            if (btnEl) {
-                if (qty > 0) {
-                    btnEl.classList.add('in-cart');
-                    btnEl.innerHTML = '<span>✔ In Cart</span>';
-                } else {
-                    btnEl.classList.remove('in-cart');
-                    btnEl.innerHTML = '<span>Add</span>';
-                }
-            }
-        }
-
-        function addHamperToCart(hamperId) {
-            const hamper = hampers.find(h => h.id === hamperId);
-            if (!hamper) return;
-            const hamperItemId = 'hamper-' + hamperId;
-            const existing = cart.find(item => item.id === hamperItemId);
-            if (existing) {
-                existing.quantity += 1;
-            } else {
-                cart.push({
-                    id: hamperItemId,
-                    name: hamper.name,
-                    price: hamper.price,
-                    image: 'https://picsum.photos/seed/hamper-' + hamperId + '/400/300',
-                    quantity: 1,
-                    category: 'hamper',
-                    isHamper: true,
-                    hamperId: hamperId,
-                    hamperIncludes: hamper.includes,
-                    hamperGift: hamper.gift
-                });
-            }
-            updateCartUI();
-            openCart();
-            showToast('🎁 ' + hamper.name + ' added to your hamper!');
-        }
-
-        function removeCartItem(id) {
-            cart = cart.filter(item => item.id !== id);
-            updateCartUI();
-            if (!id.startsWith('hamper-')) updateSingleProduct(id);
-        }
-
-        // ─── DISCOUNT LOGIC ────────────────────────────────────────────
-        function shouldApplyDiscount(cartItems) {
-            const hasHamper = cartItems.some(item => item.isHamper === true);
-            const individualProducts = cartItems.filter(item => !item.isHamper);
-            const productCount = individualProducts.reduce((sum, item) => sum + item.quantity, 0);
-            const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
-            if (hasHamper) return productCount >= 2;
-            return subtotal >= 1100;
-        }
-
-        // ─── CART UI ────────────────────────────────────────────────────
-        function updateCartUI() {
-            const body = document.getElementById('cartBody');
-            const footer = document.getElementById('cartFooter');
-            const subtotalEl = document.getElementById('cartSubtotal');
-            const discountEl = document.getElementById('cartDiscount');
-            const discountRow = document.getElementById('discountRow');
-            const totalEl = document.getElementById('cartTotal');
-            const minMsg = document.getElementById('minMsg');
-            const checkoutBtn = document.getElementById('checkoutBtn');
-
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            document.getElementById('cartCount').textContent = totalItems;
-
-            if (cart.length === 0) {
-                body.innerHTML =
-                    `<div class="empty"><div>🧺</div><p>Your hamper is empty.<br />Start adding products!</p></div>`;
-                footer.style.display = 'none';
-                return;
-            }
-            footer.style.display = 'block';
-
-            let subtotal = 0;
-            let html = '';
-            cart.forEach(item => {
-                const qty = item.quantity || 1;
-                const price = item.price || 0;
-                subtotal += price * qty;
-                const isHamper = item.isHamper || false;
-                const hamperTag = isHamper ? '<div class="hamper-tag">🎁 Ready-Made Hamper</div>' : '';
-                let extraInfo = '';
-                if (isHamper && item.hamperIncludes) {
-                    extraInfo =
-                        `<div style="font-size:9px;color:var(--soft);opacity:.6;margin-top:1px;">📦 ${item.hamperIncludes}</div>`;
-                }
-                html += `
-              <div class="cart-item">
-                <img src="${item.image || 'https://picsum.photos/seed/default/100/100'}" alt="${item.name}" loading="lazy" decoding="async" width="48" height="48" />
-                <div class="info">
-                  <div class="name">${item.name}</div>
-                  <div class="price">₹${price} × ${qty} = ₹${(price*qty).toFixed(0)}</div>
-                  ${hamperTag}
-                  ${extraInfo}
-                </div>
-                <div class="qty-wrap">
-                  <button onclick="changeCartItemQty('${item.id}',-1)">−</button>
-                  <span>${qty}</span>
-                  <button onclick="changeCartItemQty('${item.id}',1)">+</button>
-                </div>
-                <button class="remove-item" onclick="removeCartItem('${item.id}')">✕</button>
-              </div>
-            `;
-            });
-            body.innerHTML = html;
-
-            const discountEligible = shouldApplyDiscount(cart);
-            const discount = discountEligible ? subtotal * 0.1 : 0;
-            const total = subtotal - discount;
-
-            subtotalEl.textContent = '₹' + subtotal.toFixed(0);
-            if (discount > 0) {
-                discountRow.style.display = 'flex';
-                discountEl.textContent = '-₹' + discount.toFixed(0);
-            } else {
-                discountRow.style.display = 'none';
-            }
-            totalEl.textContent = '₹' + total.toFixed(0);
-
-            const hasHamper = cart.some(item => item.isHamper === true);
-            const individualProducts = cart.filter(item => !item.isHamper);
-            const productCount = individualProducts.reduce((sum, item) => sum + item.quantity, 0);
-
-            minMsg.classList.remove('discount-active');
-
-            if (discountEligible) {
-                minMsg.textContent = '🎉🎊 YOU GET 10% DISCOUNT! CONGRATS! 🎊🎉';
-                minMsg.classList.add('discount-active');
-                checkoutBtn.disabled = false;
-            } else if (hasHamper && productCount < 2) {
-                minMsg.textContent = productCount === 0 ?
-                    '🎁 Add products to your hamper and get 10% off!' :
-                    '🎁 Add one more product to your hamper and get 10% off!';
-                checkoutBtn.disabled = false;
-            } else if (!hasHamper && subtotal < 1100) {
-                const need = 1100 - subtotal;
-                minMsg.textContent = '🛒 Add ₹' + need.toFixed(0) + ' more to get 10% off!';
-                checkoutBtn.disabled = true;
-            } else {
-                minMsg.textContent = '🛒 Add more items to get 10% off!';
-                checkoutBtn.disabled = true;
-            }
-            document.getElementById('cartCount').textContent = totalItems;
-        }
-
-        function changeCartItemQty(id, delta) {
-            const existing = cart.find(item => item.id === id);
-            if (existing) {
-                const newQty = existing.quantity + delta;
-                if (newQty <= 0) {
-                    cart = cart.filter(item => item.id !== id);
-                } else {
-                    existing.quantity = newQty;
-                }
-            }
-            updateCartUI();
-            if (!id.startsWith('hamper-')) updateSingleProduct(id);
-        }
-
-        // ─── CART TOGGLE ──────────────────────────────────────────────
-        function toggleCart() {
-            if (cartOpen) closeCart();
-            else openCart();
-        }
-
-        function openCart() {
-            cartOpen = true;
-            document.getElementById('cartSidebar').classList.add('open');
-            document.getElementById('cartOverlay').style.display = 'block';
-            document.body.style.overflow = 'hidden';
-            updateCartUI();
-        }
-
-        function closeCart() {
-            cartOpen = false;
-            document.getElementById('cartSidebar').classList.remove('open');
-            document.getElementById('cartOverlay').style.display = 'none';
-            document.body.style.overflow = '';
-        }
-
-        // ─── CHECKOUT ──────────────────────────────────────────────────
-        function checkout() {
-            if (cart.length === 0) return;
-            let subtotal = 0;
-            const items = cart.map(item => {
-                const qty = item.quantity || 1;
-                const price = item.price || 0;
-                subtotal += price * qty;
-                return { name: item.name, quantity: qty, price: price, isHamper: item.isHamper || false };
-            });
-            const discountEligible = shouldApplyDiscount(cart);
-            const discount = discountEligible ? subtotal * 0.1 : 0;
-            const total = subtotal - discount;
-            const url = makeWhatsAppLink(items, total, discount);
-            window.open(url, '_blank');
-            closeCart();
-        }
-
-        // ─── BACK BUTTON WITH INSTANT SCROLL RESTORE ──────────────────
-        function goBackWithScroll() {
-            saveScrollPosition(currentPageId);
-            history.back();
-        }
-
-        // ─── PAGE NAVIGATION ──────────────────────────────────────────
-        function setPage(page) {
-            document.getElementById('homePage').style.display = page === 'home' ? 'block' : 'none';
-            document.getElementById('categoryPage').style.display = page === 'category' ? 'block' : 'none';
-            document.getElementById('productDetailPage').style.display = page === 'product' ? 'block' : 'none';
-        }
-
-        function showHomePageOnly() {
-            saveScrollPosition(currentPageId);
-            setPage('home');
-            currentPageId = 'home';
-            restoreScrollPosition('home');
-            if (cartOpen) closeCart();
-        }
-
-        function goHome(e) {
-            if (e) e.preventDefault();
-            saveScrollPosition(currentPageId);
-            setPage('home');
-            currentPageId = 'home';
-            history.pushState({ page: 'home', scrollY: 0 }, '', location.pathname);
-            restoreScrollPosition('home');
-            if (cartOpen) closeCart();
-        }
-
-        function scrollToHampers(e) {
-            if (e) e.preventDefault();
-            saveScrollPosition(currentPageId);
-            setPage('home');
-            currentPageId = 'home';
-            history.pushState({ page: 'home', scrollY: 0 }, '', '#hampers');
-            setTimeout(() => {
-                const el = document.getElementById('hampers');
-                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 50);
-        }
-
-        function scrollToProducts(e) {
-            if (e) e.preventDefault();
-            saveScrollPosition(currentPageId);
-            setPage('home');
-            currentPageId = 'home';
-            history.pushState({ page: 'home', scrollY: 0 }, '', '#products');
-            setTimeout(() => {
-                const el = document.getElementById('products');
-                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 50);
-        }
-
-        // ─── CATEGORY PAGE ────────────────────────────────────────────
-        function openCategory(cat, push) {
-            saveScrollPosition(currentPageId);
-            setPage('category');
-            currentPageId = 'category-' + cat;
-            const category = allProducts[cat];
-            document.getElementById('categoryTitle').innerText = category.title;
-            document.getElementById('categoryDesc').innerText = category.desc;
-            renderCategoryProducts(cat);
-            if (push) {
-                history.pushState({ page: 'category', cat: cat, scrollY: 0 }, '', '#category-' + cat);
-            }
-            if (!restoreScrollPosition(currentPageId)) {
-                window.scrollTo({ top: 0, behavior: 'instant' });
-            }
-            if (cartOpen) closeCart();
-        }
-
-        // ─── PRODUCT DETAIL ────────────────────────────────────────────
-        function openProduct(cat, idx, push) {
-            const product = findProduct(cat, idx);
-            if (!product) return;
-            saveScrollPosition(currentPageId);
-            currentProduct = product;
-            currentImageIndex = 0;
-            currentDetailCat = cat;
-            currentDetailIdx = idx;
-
-            setPage('product');
-            currentPageId = 'product-' + cat + '-' + idx;
-            document.getElementById('detailTitle').innerText = product.name;
-            document.getElementById('detailShort').innerText = product.desc;
-            document.getElementById('detailName').innerText = product.name;
-            document.getElementById('detailPrice').innerText = product.price;
-            document.getElementById('detailDesc').innerText = product.desc;
-
-            const id = getProductId(cat, idx);
-            const inCart = cart.find(item => item.id === id);
-            const qty = inCart ? inCart.quantity : 0;
-            const addBtn = document.querySelector('.detail-buttons .btn-main');
-            if (addBtn) {
-                addBtn.innerHTML = qty > 0 ? '<span>✔ In Hamper (' + qty + ')</span>' : '<span>Add to Hamper</span>';
-                addBtn.onclick = function() {
-                    changeQty(id, 1);
-                    const updated = cart.find(item => item.id === id);
-                    this.innerHTML = updated ? '<span>✔ In Hamper (' + updated.quantity + ')</span>' :
-                        '<span>Add to Hamper</span>';
-                    showToast('🛒 ' + product.name + ' added to hamper!');
-                };
-            }
-
-            document.getElementById('detailWhatsapp').href =
-                `https://wa.me/${WA_NUMBER}?text=Hello%20AMJO%20HOME'S%2C%20I%20want%20to%20order%20${encodeURIComponent(product.name)}.%20Price%3A%20₹${product.price}`;
-
-            loadThumbs(product);
-            loadDetailImage(product);
-
-            if (push) {
-                history.pushState({ page: 'product', cat: cat, index: idx, scrollY: 0 }, '', '#product-' + cat + '-' +
-                idx);
-            }
-            if (!restoreScrollPosition(currentPageId)) {
-                window.scrollTo({ top: 0, behavior: 'instant' });
-            }
-            if (cartOpen) closeCart();
-        }
-
-        function addProductFromDetail() {
-            if (!currentDetailCat || currentDetailIdx === null) return;
-            const id = getProductId(currentDetailCat, currentDetailIdx);
-            changeQty(id, 1);
-            const updated = cart.find(item => item.id === id);
-            const addBtn = document.querySelector('.detail-buttons .btn-main');
-            if (addBtn) {
-                addBtn.innerHTML = updated ? '<span>✔ In Hamper (' + updated.quantity + ')</span>' :
-                    '<span>Add to Hamper</span>';
-            }
-            showToast('🛒 ' + currentProduct.name + ' added to hamper!');
-        }
-
-        function loadDetailImage(product) {
-            const mainImg = document.getElementById('mainProductImage');
-            mainImg.src = product.images[currentImageIndex] || 'https://picsum.photos/seed/fallback/600/420';
-            mainImg.onclick = function() { openFullImage(currentImageIndex); };
-            document.querySelectorAll('.thumbs img').forEach((img, i) => {
-                img.classList.toggle('active', i === currentImageIndex);
-            });
-        }
-
-        function loadThumbs(product) {
-            const container = document.getElementById('thumbImages');
-            container.innerHTML = product.images.map((img, i) =>
-                `<img src="${img}" loading="lazy" decoding="async" class="${i===0?'active':''}" onclick="selectImage(${i})" />`
-            ).join('');
-        }
-
-        function changeImage(direction) {
-            if (!currentProduct) return;
-            currentImageIndex += direction;
-            if (currentImageIndex < 0) currentImageIndex = currentProduct.images.length - 1;
-            if (currentImageIndex >= currentProduct.images.length) currentImageIndex = 0;
-            loadDetailImage(currentProduct);
-        }
-
-        function selectImage(index) {
-            currentImageIndex = index;
-            loadDetailImage(currentProduct);
-        }
-
-        // ─── FULL IMAGE MODAL ──────────────────────────────────────────
-        function openFullImage(index) {
-            if (!currentProduct || !currentProduct.images || !currentProduct.images.length) return;
-            modalImageIndex = index;
-            document.getElementById('fullImageView').src = currentProduct.images[modalImageIndex];
-            document.getElementById('fullImageModal').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeFullImage(e) {
-            if (e) e.stopPropagation();
-            document.getElementById('fullImageModal').style.display = 'none';
-            document.body.style.overflow = '';
-        }
-
-        function modalChangeImage(e, direction) {
-            if (e) e.stopPropagation();
-            if (!currentProduct || !currentProduct.images || !currentProduct.images.length) return;
-            modalImageIndex += direction;
-            if (modalImageIndex < 0) modalImageIndex = currentProduct.images.length - 1;
-            if (modalImageIndex >= currentProduct.images.length) modalImageIndex = 0;
-            document.getElementById('fullImageView').src = currentProduct.images[modalImageIndex];
-        }
-
-        document.addEventListener('keydown', function(e) {
-            const modal = document.getElementById('fullImageModal');
-            if (modal.style.display !== 'flex') return;
-            if (e.key === 'Escape') closeFullImage(e);
-            if (e.key === 'ArrowLeft') modalChangeImage(e, -1);
-            if (e.key === 'ArrowRight') modalChangeImage(e, 1);
-        });
-
-        // ─── HEADER SCROLL EFFECT ──────────────────────────────────────
-        let headerScrolled = false;
-
-        function handleScroll() {
-            const header = document.getElementById('mainHeader');
-            if (window.scrollY > 40) {
-                if (!headerScrolled) { header.classList.add('scrolled');
-                    headerScrolled = true; }
-            } else {
-                if (headerScrolled) { header.classList.remove('scrolled');
-                    headerScrolled = false; }
-            }
-            if (currentPageId) {
-                scrollPositions.set(currentPageId, window.scrollY);
-            }
-        }
-        window.addEventListener('scroll', handleScroll, { passive: true });
-
-        // ─── POPSTATE ──────────────────────────────────────────────────
-        window.addEventListener('popstate', function(e) {
-            const state = e.state;
-            if (!state || state.page === 'home') {
-                setPage('home');
-                currentPageId = 'home';
-                restoreScrollPosition('home');
-                return;
-            }
-            if (state.page === 'category') {
-                setPage('category');
-                currentPageId = 'category-' + state.cat;
-                const category = allProducts[state.cat];
-                if (category) {
-                    document.getElementById('categoryTitle').innerText = category.title;
-                    document.getElementById('categoryDesc').innerText = category.desc;
-                    renderCategoryProducts(state.cat);
-                }
-                restoreScrollPosition(currentPageId);
-                return;
-            }
-            if (state.page === 'product') {
-                const product = findProduct(state.cat, state.index);
-                if (product) {
-                    currentProduct = product;
-                    currentDetailCat = state.cat;
-                    currentDetailIdx = state.index;
-                    setPage('product');
-                    currentPageId = 'product-' + state.cat + '-' + state.index;
-                    document.getElementById('detailTitle').innerText = product.name;
-                    document.getElementById('detailShort').innerText = product.desc;
-                    document.getElementById('detailName').innerText = product.name;
-                    document.getElementById('detailPrice').innerText = product.price;
-                    document.getElementById('detailDesc').innerText = product.desc;
-                    const id = getProductId(state.cat, state.index);
-                    const inCart = cart.find(item => item.id === id);
-                    const qty = inCart ? inCart.quantity : 0;
-                    const addBtn = document.querySelector('.detail-buttons .btn-main');
-                    if (addBtn) {
-                        addBtn.innerHTML = qty > 0 ? '<span>✔ In Hamper (' + qty + ')</span>' :
-                            '<span>Add to Hamper</span>';
-                        addBtn.onclick = function() {
-                            changeQty(id, 1);
-                            const updated = cart.find(item => item.id === id);
-                            this.innerHTML = updated ? '<span>✔ In Hamper (' + updated.quantity + ')</span>' :
-                                '<span>Add to Hamper</span>';
-                            showToast('🛒 ' + product.name + ' added to hamper!');
-                        };
-                    }
-                    document.getElementById('detailWhatsapp').href =
-                        `https://wa.me/${WA_NUMBER}?text=Hello%20AMJO%20HOME'S%2C%20I%20want%20to%20order%20${encodeURIComponent(product.name)}.%20Price%3A%20₹${product.price}`;
-                    loadThumbs(product);
-                    loadDetailImage(product);
-                }
-                restoreScrollPosition(currentPageId);
-                return;
-            }
-        });
-
-        // ─── INIT ──────────────────────────────────────────────────────
-        function init() {
-            renderHampers();
-            renderAllProducts();
-            renderGallery();
-            setPage('home');
-            currentPageId = 'home';
-            scrollPositions.set('home', 0);
-
-            const hash = location.hash;
-            if (hash.startsWith('#category-')) {
-                const cat = hash.replace('#category-', '');
-                if (allProducts[cat]) openCategory(cat, false);
-            } else if (hash.startsWith('#product-')) {
-                const parts = hash.replace('#product-', '').split('-');
-                const idx = parseInt(parts.pop());
-                const cat = parts.join('-');
-                if (allProducts[cat] && allProducts[cat].products[idx]) {
-                    openProduct(cat, idx, false);
-                }
-            } else if (hash === '#hampers') {
-                setTimeout(() => {
-                    const el = document.getElementById('hampers');
-                    if (el) el.scrollIntoView({ behavior: 'auto', block: 'start' });
-                }, 100);
-            } else if (hash === '#products') {
-                setTimeout(() => {
-                    const el = document.getElementById('products');
-                    if (el) el.scrollIntoView({ behavior: 'auto', block: 'start' });
-                }, 100);
-            }
-            updateCartUI();
-        }
-
-        document.addEventListener('DOMContentLoaded', init);
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && cartOpen) closeCart();
-        });
-    </script>
-
-</body>
-</html>
+            const grid = document.getElementById('categoryProducts
