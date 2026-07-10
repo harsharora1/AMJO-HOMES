@@ -30,8 +30,9 @@
             -webkit-user-select: none;
             user-select: none;
         }
+        /* ─── IMPORTANT: Remove smooth scroll for back button instant jump ─── */
         html {
-            scroll-behavior: smooth;
+            scroll-behavior: auto;
         }
         body {
             font-family: 'Poppins', Arial, sans-serif;
@@ -1851,7 +1852,6 @@
             section {
                 padding: 36px 0;
             }
-            /* ─── HEADER HEIGHT INCREASED FOR BIGGER TEXT ─── */
             .nav {
                 height: 68px;
             }
@@ -1861,11 +1861,9 @@
                 border-radius: 8px;
                 padding: 2px;
             }
-            /* ─── BIGGER "AMJO HOME'S" ON MOBILE ─── */
             .logo .brand-text strong {
                 font-size: 20px;
             }
-            /* ─── BIGGER "Gifting Hampers" ON MOBILE ─── */
             .logo .brand-text span {
                 font-size: 14px;
                 letter-spacing: 1.5px;
@@ -2179,7 +2177,6 @@
             .detail-info h2 {
                 font-size: 20px;
             }
-            /* Mobile logo text slightly smaller on very small screens */
             .logo .brand-text strong {
                 font-size: 18px;
             }
@@ -2501,20 +2498,18 @@
         const scrollPositions = new Map();
         let currentPageId = 'home';
 
+        // Save current scroll position
         function saveScrollPosition(pageId) {
             scrollPositions.set(pageId, window.scrollY);
         }
 
+        // ─── INSTANT SCROLL RESTORE — NO ANIMATION ────────────────────
         function restoreScrollPosition(pageId) {
             const pos = scrollPositions.get(pageId);
             if (pos !== undefined) {
-                // Use a small delay to ensure layout is stable before scrolling
-                return new Promise((resolve) => {
-                    requestAnimationFrame(() => {
-                        window.scrollTo(0, pos);
-                        resolve(true);
-                    });
-                });
+                // Use behavior: 'instant' to skip any smooth scrolling
+                window.scrollTo({ top: pos, behavior: 'instant' });
+                return true;
             }
             return false;
         }
@@ -3041,7 +3036,7 @@
             closeCart();
         }
 
-        // ─── BACK BUTTON WITH SCROLL RESTORE ──────────────────────────
+        // ─── BACK BUTTON WITH INSTANT SCROLL RESTORE ──────────────────
         function goBackWithScroll() {
             saveScrollPosition(currentPageId);
             history.back();
@@ -3058,10 +3053,7 @@
             saveScrollPosition(currentPageId);
             setPage('home');
             currentPageId = 'home';
-            // Use a small delay to ensure layout is stable
-            setTimeout(() => {
-                restoreScrollPosition('home');
-            }, 10);
+            restoreScrollPosition('home');
             if (cartOpen) closeCart();
         }
 
@@ -3071,9 +3063,7 @@
             setPage('home');
             currentPageId = 'home';
             history.pushState({ page: 'home', scrollY: 0 }, '', location.pathname);
-            setTimeout(() => {
-                restoreScrollPosition('home');
-            }, 10);
+            restoreScrollPosition('home');
             if (cartOpen) closeCart();
         }
 
@@ -3113,12 +3103,9 @@
             if (push) {
                 history.pushState({ page: 'category', cat: cat, scrollY: 0 }, '', '#category-' + cat);
             }
-            // Small delay to ensure layout is stable
-            setTimeout(() => {
-                if (!restoreScrollPosition(currentPageId)) {
-                    window.scrollTo(0, 0);
-                }
-            }, 10);
+            if (!restoreScrollPosition(currentPageId)) {
+                window.scrollTo({ top: 0, behavior: 'instant' });
+            }
             if (cartOpen) closeCart();
         }
 
@@ -3165,12 +3152,9 @@
                 history.pushState({ page: 'product', cat: cat, index: idx, scrollY: 0 }, '', '#product-' + cat + '-' +
                 idx);
             }
-            // Small delay to ensure layout is stable
-            setTimeout(() => {
-                if (!restoreScrollPosition(currentPageId)) {
-                    window.scrollTo(0, 0);
-                }
-            }, 10);
+            if (!restoreScrollPosition(currentPageId)) {
+                window.scrollTo({ top: 0, behavior: 'instant' });
+            }
             if (cartOpen) closeCart();
         }
 
@@ -3272,12 +3256,7 @@
             if (!state || state.page === 'home') {
                 setPage('home');
                 currentPageId = 'home';
-                // Small delay to ensure layout is stable before scrolling
-                setTimeout(() => {
-                    if (!restoreScrollPosition('home')) {
-                        window.scrollTo(0, state && state.scrollY ? state.scrollY : 0);
-                    }
-                }, 10);
+                restoreScrollPosition('home');
                 return;
             }
             if (state.page === 'category') {
@@ -3289,11 +3268,7 @@
                     document.getElementById('categoryDesc').innerText = category.desc;
                     renderCategoryProducts(state.cat);
                 }
-                setTimeout(() => {
-                    if (!restoreScrollPosition(currentPageId)) {
-                        window.scrollTo(0, state.scrollY || 0);
-                    }
-                }, 10);
+                restoreScrollPosition(currentPageId);
                 return;
             }
             if (state.page === 'product') {
@@ -3329,11 +3304,7 @@
                     loadThumbs(product);
                     loadDetailImage(product);
                 }
-                setTimeout(() => {
-                    if (!restoreScrollPosition(currentPageId)) {
-                        window.scrollTo(0, state.scrollY || 0);
-                    }
-                }, 10);
+                restoreScrollPosition(currentPageId);
                 return;
             }
         });
