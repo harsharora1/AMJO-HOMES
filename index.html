@@ -20,7 +20,6 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
     </noscript>
 
-    <!-- ===== CRITICAL INLINE CSS ===== -->
     <style>
         /* ── RESET ── */
         * {
@@ -136,8 +135,8 @@
             flex-shrink: 0;
         }
         .logo img {
-            width: 58px;
-            height: 58px;
+            width: 48px;
+            height: 48px;
             border-radius: 12px;
             object-fit: contain;
             background: rgba(255, 255, 255, 0.95);
@@ -1809,7 +1808,6 @@
 
         /* ===== ENHANCED MOBILE RESPONSIVE ===== */
         @media (max-width:768px) {
-            /* Products — bigger & better on tablets */
             .product-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 18px;
@@ -1853,8 +1851,9 @@
             section {
                 padding: 36px 0;
             }
+            /* ─── HEADER HEIGHT INCREASED FOR BIGGER TEXT ─── */
             .nav {
-                height: 60px;
+                height: 68px;
             }
             .logo img {
                 width: 38px;
@@ -1862,12 +1861,15 @@
                 border-radius: 8px;
                 padding: 2px;
             }
+            /* ─── BIGGER "AMJO HOME'S" ON MOBILE ─── */
             .logo .brand-text strong {
-                font-size: 17px;
+                font-size: 20px;
             }
+            /* ─── BIGGER "Gifting Hampers" ON MOBILE ─── */
             .logo .brand-text span {
-                font-size: 8px;
-                letter-spacing: 1.2px;
+                font-size: 14px;
+                letter-spacing: 1.5px;
+                margin-top: -1px;
             }
             .hero {
                 padding: 24px 0;
@@ -1908,7 +1910,6 @@
                 padding: 8px 14px;
             }
 
-            /* ─── PRODUCTS: BIGGER & BETTER ON MOBILE ─── */
             .product-grid {
                 grid-template-columns: 1fr 1fr;
                 gap: 14px;
@@ -2137,7 +2138,6 @@
             }
         }
 
-        /* ─── VERY SMALL PHONES: SINGLE COLUMN FOR PRODUCTS ─── */
         @media (max-width:480px) {
             .product-grid {
                 grid-template-columns: 1fr 1fr;
@@ -2179,9 +2179,19 @@
             .detail-info h2 {
                 font-size: 20px;
             }
+            /* Mobile logo text slightly smaller on very small screens */
+            .logo .brand-text strong {
+                font-size: 18px;
+            }
+            .logo .brand-text span {
+                font-size: 12px;
+                letter-spacing: 1.2px;
+            }
+            .nav {
+                height: 62px;
+            }
         }
 
-        /* ─── EXTRA SMALL PHONES: SINGLE COLUMN ─── */
         @media (max-width:400px) {
             .product-grid {
                 grid-template-columns: 1fr 1fr;
@@ -2225,9 +2235,17 @@
                 padding: 3px 12px;
                 letter-spacing: 1px;
             }
+            .logo .brand-text strong {
+                font-size: 16px;
+            }
+            .logo .brand-text span {
+                font-size: 11px;
+            }
+            .nav {
+                height: 58px;
+            }
         }
 
-        /* ─── FOR VERY NARROW SCREENS: SINGLE COLUMN PRODUCTS ─── */
         @media (max-width:360px) {
             .product-grid {
                 grid-template-columns: 1fr;
@@ -2258,6 +2276,15 @@
             .product-info .card-actions .qty-wrap span {
                 min-width: 24px;
                 font-size: 15px;
+            }
+            .logo .brand-text strong {
+                font-size: 15px;
+            }
+            .logo .brand-text span {
+                font-size: 10px;
+            }
+            .nav {
+                height: 54px;
             }
         }
     </style>
@@ -2464,8 +2491,8 @@
     <!-- ===== TOAST CONTAINER ===== -->
     <div class="toast-container"></div>
 
-    <!-- ===== JAVASCRIPT (deferred) ===== -->
-    <script defer>
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
         // ─── CONFIG ──────────────────────────────────────────────────────
         history.scrollRestoration = "manual";
         const WA_NUMBER = "919646432566";
@@ -2481,8 +2508,13 @@
         function restoreScrollPosition(pageId) {
             const pos = scrollPositions.get(pageId);
             if (pos !== undefined) {
-                window.scrollTo(0, pos);
-                return true;
+                // Use a small delay to ensure layout is stable before scrolling
+                return new Promise((resolve) => {
+                    requestAnimationFrame(() => {
+                        window.scrollTo(0, pos);
+                        resolve(true);
+                    });
+                });
             }
             return false;
         }
@@ -2697,7 +2729,7 @@
             grid.appendChild(fragment);
         }
 
-        // ─── PRODUCT CARD HTML (supports both grid and row layouts) ──
+        // ─── PRODUCT CARD HTML ──────────────────────────────────────────
         function productCardHTML(cat, idx, p, isCategoryPage = false, rowLayout = false) {
             const id = getProductId(cat, idx);
             const inCart = cart.find(item => item.id === id);
@@ -2744,7 +2776,7 @@
           `;
         }
 
-        // ─── RENDER CATEGORY PRODUCTS (row layout) ──────────────────
+        // ─── RENDER CATEGORY PRODUCTS ──────────────────────────────────
         function renderCategoryProducts(cat) {
             const category = allProducts[cat];
             const grid = document.getElementById('categoryProducts');
@@ -3026,7 +3058,10 @@
             saveScrollPosition(currentPageId);
             setPage('home');
             currentPageId = 'home';
-            restoreScrollPosition('home');
+            // Use a small delay to ensure layout is stable
+            setTimeout(() => {
+                restoreScrollPosition('home');
+            }, 10);
             if (cartOpen) closeCart();
         }
 
@@ -3036,7 +3071,9 @@
             setPage('home');
             currentPageId = 'home';
             history.pushState({ page: 'home', scrollY: 0 }, '', location.pathname);
-            restoreScrollPosition('home');
+            setTimeout(() => {
+                restoreScrollPosition('home');
+            }, 10);
             if (cartOpen) closeCart();
         }
 
@@ -3076,9 +3113,12 @@
             if (push) {
                 history.pushState({ page: 'category', cat: cat, scrollY: 0 }, '', '#category-' + cat);
             }
-            if (!restoreScrollPosition(currentPageId)) {
-                window.scrollTo(0, 0);
-            }
+            // Small delay to ensure layout is stable
+            setTimeout(() => {
+                if (!restoreScrollPosition(currentPageId)) {
+                    window.scrollTo(0, 0);
+                }
+            }, 10);
             if (cartOpen) closeCart();
         }
 
@@ -3125,9 +3165,12 @@
                 history.pushState({ page: 'product', cat: cat, index: idx, scrollY: 0 }, '', '#product-' + cat + '-' +
                 idx);
             }
-            if (!restoreScrollPosition(currentPageId)) {
-                window.scrollTo(0, 0);
-            }
+            // Small delay to ensure layout is stable
+            setTimeout(() => {
+                if (!restoreScrollPosition(currentPageId)) {
+                    window.scrollTo(0, 0);
+                }
+            }, 10);
             if (cartOpen) closeCart();
         }
 
@@ -3229,9 +3272,12 @@
             if (!state || state.page === 'home') {
                 setPage('home');
                 currentPageId = 'home';
-                if (!restoreScrollPosition('home')) {
-                    window.scrollTo(0, state && state.scrollY ? state.scrollY : 0);
-                }
+                // Small delay to ensure layout is stable before scrolling
+                setTimeout(() => {
+                    if (!restoreScrollPosition('home')) {
+                        window.scrollTo(0, state && state.scrollY ? state.scrollY : 0);
+                    }
+                }, 10);
                 return;
             }
             if (state.page === 'category') {
@@ -3243,9 +3289,11 @@
                     document.getElementById('categoryDesc').innerText = category.desc;
                     renderCategoryProducts(state.cat);
                 }
-                if (!restoreScrollPosition(currentPageId)) {
-                    window.scrollTo(0, state.scrollY || 0);
-                }
+                setTimeout(() => {
+                    if (!restoreScrollPosition(currentPageId)) {
+                        window.scrollTo(0, state.scrollY || 0);
+                    }
+                }, 10);
                 return;
             }
             if (state.page === 'product') {
@@ -3281,9 +3329,11 @@
                     loadThumbs(product);
                     loadDetailImage(product);
                 }
-                if (!restoreScrollPosition(currentPageId)) {
-                    window.scrollTo(0, state.scrollY || 0);
-                }
+                setTimeout(() => {
+                    if (!restoreScrollPosition(currentPageId)) {
+                        window.scrollTo(0, state.scrollY || 0);
+                    }
+                }, 10);
                 return;
             }
         });
