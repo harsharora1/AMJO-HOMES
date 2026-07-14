@@ -2587,12 +2587,14 @@
         function restoreScrollPosition(pageId) {
             const pos = scrollPositions.get(pageId);
             if (pos !== undefined) {
-                // Use behavior: 'instant' to skip any smooth scrolling
                 window.scrollTo({ top: pos, behavior: 'instant' });
                 return true;
             }
             return false;
         }
+
+        // ─── CART HISTORY STATE MANAGEMENT ───────────────────────────
+        let cartState = null; // { prevState, prevUrl }
 
         // ─── PRODUCT DATA ──────────────────────────────────────────────
         const IMG_SEED = (name) =>
@@ -3084,6 +3086,16 @@
         }
 
         function openCart() {
+            if (cartOpen) return;
+
+            // Push a history state so that back button closes cart
+            if (!cartState) {
+                const prevState = history.state;
+                const prevUrl = location.href;
+                history.pushState({ cartOpen: true, prevState: prevState, prevUrl: prevUrl }, '', prevUrl);
+                cartState = { prevState, prevUrl };
+            }
+
             cartOpen = true;
             document.getElementById('cartSidebar').classList.add('open');
             document.getElementById('cartOverlay').style.display = 'block';
@@ -3092,6 +3104,14 @@
         }
 
         function closeCart() {
+            if (!cartOpen) return;
+
+            // Remove the cart history state if it exists
+            if (cartState) {
+                history.replaceState(cartState.prevState, '', cartState.prevUrl);
+                cartState = null;
+            }
+
             cartOpen = false;
             document.getElementById('cartSidebar').classList.remove('open');
             document.getElementById('cartOverlay').style.display = 'none';
@@ -3131,25 +3151,26 @@
 
         function showHomePageOnly() {
             saveScrollPosition(currentPageId);
+            closeCart(); // this also clears cart history state
             setPage('home');
             currentPageId = 'home';
             restoreScrollPosition('home');
-            if (cartOpen) closeCart();
         }
 
         function goHome(e) {
             if (e) e.preventDefault();
             saveScrollPosition(currentPageId);
+            closeCart();
             setPage('home');
             currentPageId = 'home';
             history.pushState({ page: 'home', scrollY: 0 }, '', location.pathname);
             restoreScrollPosition('home');
-            if (cartOpen) closeCart();
         }
 
         function scrollToHampers(e) {
             if (e) e.preventDefault();
             saveScrollPosition(currentPageId);
+            closeCart();
             setPage('home');
             currentPageId = 'home';
             history.pushState({ page: 'home', scrollY: 0 }, '', '#hampers');
@@ -3162,6 +3183,7 @@
         function scrollToProducts(e) {
             if (e) e.preventDefault();
             saveScrollPosition(currentPageId);
+            closeCart();
             setPage('home');
             currentPageId = 'home';
             history.pushState({ page: 'home', scrollY: 0 }, '', '#products');
@@ -3174,6 +3196,7 @@
         // ─── CATEGORY PAGE ────────────────────────────────────────────
         function openCategory(cat, push) {
             saveScrollPosition(currentPageId);
+            closeCart();
             setPage('category');
             currentPageId = 'category-' + cat;
             const category = allProducts[cat];
@@ -3186,7 +3209,6 @@
             if (!restoreScrollPosition(currentPageId)) {
                 window.scrollTo({ top: 0, behavior: 'instant' });
             }
-            if (cartOpen) closeCart();
         }
 
         // ─── PRODUCT DETAIL ────────────────────────────────────────────
@@ -3194,6 +3216,7 @@
             const product = findProduct(cat, idx);
             if (!product) return;
             saveScrollPosition(currentPageId);
+            closeCart();
             currentProduct = product;
             currentImageIndex = 0;
             currentDetailCat = cat;
@@ -3235,7 +3258,6 @@
             if (!restoreScrollPosition(currentPageId)) {
                 window.scrollTo({ top: 0, behavior: 'instant' });
             }
-            if (cartOpen) closeCart();
         }
 
         function addProductFromDetail() {
@@ -3333,6 +3355,16 @@
         // ─── POPSTATE ──────────────────────────────────────────────────
         window.addEventListener('popstate', function(e) {
             const state = e.state;
+
+            // If the state indicates cart is open, close cart and restore scroll
+            if (state && state.cartOpen) {
+                closeCart(); // this will replace state with previous
+                // After closing cart, restore scroll position for current page
+                restoreScrollPosition(currentPageId);
+                return;
+            }
+
+            // Normal page navigation
             if (!state || state.page === 'home') {
                 setPage('home');
                 currentPageId = 'home';
