@@ -2593,9 +2593,6 @@
             return false;
         }
 
-        // ─── CART HISTORY STATE MANAGEMENT ───────────────────────────
-        let cartState = null; // { prevState, prevUrl }
-
         // ─── PRODUCT DATA ──────────────────────────────────────────────
         const IMG_SEED = (name) =>
             `https://picsum.photos/seed/${encodeURIComponent(name)}/400/300`;
@@ -3087,15 +3084,13 @@
 
         function openCart() {
             if (cartOpen) return;
-
-            // Push a history state so that back button closes cart
-            if (!cartState) {
-                const prevState = history.state;
-                const prevUrl = location.href;
-                history.pushState({ cartOpen: true, prevState: prevState, prevUrl: prevUrl }, '', prevUrl);
-                cartState = { prevState, prevUrl };
+            // Set hash to #cart to enable back button detection
+            if (location.hash !== '#cart') {
+                // We use replaceState to avoid adding a new history entry for the hash change
+                // but we want the hash to appear in the URL so that back button triggers hashchange.
+                // We'll push a new state with the hash.
+                history.pushState(null, '', '#cart');
             }
-
             cartOpen = true;
             document.getElementById('cartSidebar').classList.add('open');
             document.getElementById('cartOverlay').style.display = 'block';
@@ -3105,18 +3100,24 @@
 
         function closeCart() {
             if (!cartOpen) return;
-
-            // Remove the cart history state if it exists
-            if (cartState) {
-                history.replaceState(cartState.prevState, '', cartState.prevUrl);
-                cartState = null;
+            // Remove the #cart hash without adding a new history entry
+            if (location.hash === '#cart') {
+                history.replaceState(null, '', location.pathname + location.search);
             }
-
             cartOpen = false;
             document.getElementById('cartSidebar').classList.remove('open');
             document.getElementById('cartOverlay').style.display = 'none';
             document.body.style.overflow = '';
         }
+
+        // ─── HASH CHANGE LISTENER FOR BACK BUTTON ─────────────────────
+        function handleHashChange() {
+            // If the hash is not '#cart' and cart is open, close cart
+            if (cartOpen && location.hash !== '#cart') {
+                closeCart();
+            }
+        }
+        window.addEventListener('hashchange', handleHashChange);
 
         // ─── CHECKOUT ──────────────────────────────────────────────────
         function checkout() {
@@ -3151,7 +3152,7 @@
 
         function showHomePageOnly() {
             saveScrollPosition(currentPageId);
-            closeCart(); // this also clears cart history state
+            closeCart();
             setPage('home');
             currentPageId = 'home';
             restoreScrollPosition('home');
@@ -3356,14 +3357,6 @@
         window.addEventListener('popstate', function(e) {
             const state = e.state;
 
-            // If the state indicates cart is open, close cart and restore scroll
-            if (state && state.cartOpen) {
-                closeCart(); // this will replace state with previous
-                // After closing cart, restore scroll position for current page
-                restoreScrollPosition(currentPageId);
-                return;
-            }
-
             // Normal page navigation
             if (!state || state.page === 'home') {
                 setPage('home');
@@ -3451,6 +3444,9 @@
                     const el = document.getElementById('products');
                     if (el) el.scrollIntoView({ behavior: 'auto', block: 'start' });
                 }, 100);
+            } else if (hash === '#cart') {
+                // If cart hash is present on load, remove it
+                history.replaceState(null, '', location.pathname + location.search);
             }
             updateCartUI();
         }
