@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <!-- Preload critical hero image -->
-    <link rel="preload" as="image" href="img.png/hero.png" fetchpriority="high" />
+    <link rel="preload" as="image" href="hero.png" fetchpriority="high" />
 
     <!-- Font with display swap -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
@@ -2361,7 +2361,7 @@
     <header id="mainHeader">
         <div class="nav">
             <a href="#" class="logo" onclick="goHome(event)">
-                <img src="img.png/hero1.png" alt="AMJO HOME'S Logo" width="48" height="48" loading="eager" fetchpriority="high" decoding="async" onerror="this.onerror=null;this.src='https://picsum.photos/seed/logo/48/48'" />
+                <img src="hero1.png" alt="AMJO HOME'S Logo" width="48" height="48" loading="eager" fetchpriority="high" decoding="async" onerror="this.onerror=null;this.src='https://picsum.photos/seed/logo/48/48'" />
                 <div class="brand-text">
                     <strong>AMJO HOME'S</strong>
                     <span>Gifting Hampers</span>
@@ -2396,7 +2396,7 @@
                 </div>
             </div>
             <div class="hero-img">
-                <img src="img.png/hero.png" alt="AMJO HOME'S Premium Hampers" width="600" height="400" loading="eager" fetchpriority="high" decoding="async" onerror="this.onerror=null;this.src='https://picsum.photos/seed/hero/600/400'" />
+                <img src="hero.png" alt="AMJO HOME'S Premium Hampers" width="600" height="400" loading="eager" fetchpriority="high" decoding="async" onerror="this.onerror=null;this.src='https://picsum.photos/seed/hero/600/400'" />
             </div>
         </section>
 
@@ -2481,7 +2481,7 @@
             </div>
             <div class="detail-box">
                 <div class="slider">
-                    <div class="slider-main"><img id="mainProductImage" src="img.png/hero.png" alt="Product" width="600" height="420" loading="eager" decoding="async" onerror="this.onerror=null;this.src='https://picsum.photos/seed/fallback/600/420'" /></div>
+                    <div class="slider-main"><img id="mainProductImage" src="hero.png" alt="Product" width="600" height="420" loading="eager" decoding="async" onerror="this.onerror=null;this.src='https://picsum.photos/seed/fallback/600/420'" /></div>
                     <div class="slider-arrows">
                         <button onclick="changeImage(-1)">‹</button>
                         <button onclick="changeImage(1)">›</button>
@@ -2579,7 +2579,7 @@
 
         // ─── PRODUCT DATA ──────────────────────────────────────────────
         // For categories that use picsum, we keep the seed function.
-        // For 'otheritems' we use the specific img.png images.
+        // For 'otheritems' we use the specific hero images.
         const IMG_SEED = (name) =>
             `https://picsum.photos/seed/${encodeURIComponent(name)}/400/300`;
 
@@ -2657,56 +2657,47 @@
             otheritems: {
                 title: "Other Items",
                 desc: "Curated accessories to complete your gifting experience.",
-                products: [
-                    { 
-                        name: "Table Runner", 
-                        desc: "Elegant table runner for dining or festive decor. A tasteful gift.",
-                        price: 249,
-                        images: ["img.png/hero4.png", "img.png/hero5.png"]
-                    },
-                    { 
-                        name: "Placemats Set", 
-                        desc: "Set of 4 premium placemats for elegant dining. Great for housewarming.",
-                        price: 399,
-                        images: ["img.png/hero6.png", "img.png/hero7.png"]
-                    },
-                    { 
-                        name: "Napkin Set", 
-                        desc: "Set of 6 soft cloth napkins with beautiful design. Perfect gift for hosts.",
-                        price: 199,
-                        images: ["img.png/hero37.png", "img.png/hero38.png"]
-                    },
-                    { 
-                        name: "Storage Basket", 
-                        desc: "Handwoven storage basket — stylish and functional. A unique gift item.",
-                        price: 449,
-                        images: ["img.png/hero39.png", "img.png/hero40.png"]
-                    },
-                    { 
-                        name: "Decorative Tray", 
-                        desc: "Elegant decorative tray for coffee table or dressing. A chic gift.",
-                        price: 299,
-                        images: ["img.png/hero45.png", "img.png/hero46.png"]
-                    },
-                    { 
-                        name: "Wall Hanging", 
-                        desc: "Beautiful wall hanging with intricate design. Perfect for home decor gifts.",
-                        price: 399,
-                        images: ["img.png/hero47.png", "img.png/hero48.png"]
-                    },
-                    { 
-                        name: "Scented Candle Set", 
-                        desc: "Set of 3 scented candles in a gift box. A soothing gift for any home.",
-                        price: 549,
-                        images: ["img.png/hero49.png", "img.png/hero50.png"]
-                    },
-                    { 
-                        name: "Jewelry Box", 
-                        desc: "Elegant jewelry box with soft lining. A thoughtful gift for her.",
-                        price: 599,
-                        images: ["img.png/hero51.png", "img.png/hero52.png"]
-                    }
-                ]
+                products: [{
+                    name: "Table Runner",
+                    desc: "Elegant table runner for dining or festive decor. A tasteful gift.",
+                    price: 249,
+                    images: ["hero4.png", "hero5.png"]
+                }, {
+                    name: "Placemats Set",
+                    desc: "Set of 4 premium placemats for elegant dining. Great for housewarming.",
+                    price: 399,
+                    images: ["hero6.png", "hero7.png"]
+                }, {
+                    name: "Napkin Set",
+                    desc: "Set of 6 soft cloth napkins with beautiful design. Perfect gift for hosts.",
+                    price: 199,
+                    images: ["hero37.png", "hero38.png"]
+                }, {
+                    name: "Storage Basket",
+                    desc: "Handwoven storage basket — stylish and functional. A unique gift item.",
+                    price: 449,
+                    images: ["hero39.png", "hero40.png"]
+                }, {
+                    name: "Decorative Tray",
+                    desc: "Elegant decorative tray for coffee table or dressing. A chic gift.",
+                    price: 299,
+                    images: ["hero45.png", "hero46.png"]
+                }, {
+                    name: "Wall Hanging",
+                    desc: "Beautiful wall hanging with intricate design. Perfect for home decor gifts.",
+                    price: 399,
+                    images: ["hero47.png", "hero48.png"]
+                }, {
+                    name: "Scented Candle Set",
+                    desc: "Set of 3 scented candles in a gift box. A soothing gift for any home.",
+                    price: 549,
+                    images: ["hero49.png", "hero50.png"]
+                }, {
+                    name: "Jewelry Box",
+                    desc: "Elegant jewelry box with soft lining. A thoughtful gift for her.",
+                    price: 599,
+                    images: ["hero51.png", "hero52.png"]
+                }]
             }
         };
 
@@ -3389,130 +3380,4 @@
             const modal = document.getElementById('fullImageModal');
             if (modal.style.display !== 'flex') return;
             if (e.key === 'Escape') closeFullImage(e);
-            if (e.key === 'ArrowLeft') modalChangeImage(e, -1);
-            if (e.key === 'ArrowRight') modalChangeImage(e, 1);
-        });
-
-        // ─── HEADER SCROLL EFFECT ──────────────────────────────────────
-        let headerScrolled = false;
-
-        function handleScroll() {
-            const header = document.getElementById('mainHeader');
-            if (window.scrollY > 40) {
-                if (!headerScrolled) { header.classList.add('scrolled');
-                    headerScrolled = true; }
-            } else {
-                if (headerScrolled) { header.classList.remove('scrolled');
-                    headerScrolled = false; }
-            }
-            if (currentPageId) {
-                scrollPositions.set(currentPageId, window.scrollY);
-            }
-        }
-        window.addEventListener('scroll', handleScroll, { passive: true });
-
-        // ─── POPSTATE ──────────────────────────────────────────────────
-        window.addEventListener('popstate', function(e) {
-            const state = e.state;
-
-            if (!state || state.page === 'home') {
-                setPage('home');
-                currentPageId = 'home';
-                restoreScrollPosition('home');
-                return;
-            }
-            if (state.page === 'category') {
-                setPage('category');
-                currentPageId = 'category-' + state.cat;
-                const category = allProducts[state.cat];
-                if (category) {
-                    document.getElementById('categoryTitle').innerText = category.title;
-                    document.getElementById('categoryDesc').innerText = category.desc;
-                    renderCategoryProducts(state.cat);
-                }
-                restoreScrollPosition(currentPageId);
-                return;
-            }
-            if (state.page === 'product') {
-                const product = findProduct(state.cat, state.index);
-                if (product) {
-                    currentProduct = product;
-                    currentDetailCat = state.cat;
-                    currentDetailIdx = state.index;
-                    setPage('product');
-                    currentPageId = 'product-' + state.cat + '-' + state.index;
-                    document.getElementById('detailTitle').innerText = product.name;
-                    document.getElementById('detailShort').innerText = product.desc;
-                    document.getElementById('detailName').innerText = product.name;
-                    document.getElementById('detailPrice').innerText = product.price;
-                    document.getElementById('detailDesc').innerText = product.desc;
-                    const id = getProductId(state.cat, state.index);
-                    const inCart = cart.find(item => item.id === id);
-                    const qty = inCart ? inCart.quantity : 0;
-                    const addBtn = document.querySelector('.detail-buttons .btn-main');
-                    if (addBtn) {
-                        addBtn.innerHTML = qty > 0 ? '<span>✔ In Hamper (' + qty + ')</span>' :
-                            '<span>Add to Hamper</span>';
-                        addBtn.onclick = function() {
-                            changeQty(id, 1);
-                            const updated = cart.find(item => item.id === id);
-                            this.innerHTML = updated ? '<span>✔ In Hamper (' + updated.quantity + ')</span>' :
-                                '<span>Add to Hamper</span>';
-                            showToast('🛒 ' + product.name + ' added to hamper!');
-                        };
-                    }
-                    document.getElementById('detailWhatsapp').href =
-                        `https://wa.me/${WA_NUMBER}?text=Hello%20AMJO%20HOME'S%2C%20I%20want%20to%20order%20${encodeURIComponent(product.name)}.%20Price%3A%20₹${product.price}`;
-                    loadThumbs(product);
-                    loadDetailImage(product);
-                }
-                restoreScrollPosition(currentPageId);
-                return;
-            }
-        });
-
-        // ─── INIT ──────────────────────────────────────────────────────
-        function init() {
-            renderHampers();
-            renderAllProducts();
-            renderGallery();
-            setPage('home');
-            currentPageId = 'home';
-            scrollPositions.set('home', 0);
-
-            const hash = location.hash;
-            if (hash.startsWith('#category-')) {
-                const cat = hash.replace('#category-', '');
-                if (allProducts[cat]) openCategory(cat, false);
-            } else if (hash.startsWith('#product-')) {
-                const parts = hash.replace('#product-', '').split('-');
-                const idx = parseInt(parts.pop());
-                const cat = parts.join('-');
-                if (allProducts[cat] && allProducts[cat].products[idx]) {
-                    openProduct(cat, idx, false);
-                }
-            } else if (hash === '#hampers') {
-                setTimeout(() => {
-                    const el = document.getElementById('hampers');
-                    if (el) el.scrollIntoView({ behavior: 'auto', block: 'start' });
-                }, 100);
-            } else if (hash === '#products') {
-                setTimeout(() => {
-                    const el = document.getElementById('products');
-                    if (el) el.scrollIntoView({ behavior: 'auto', block: 'start' });
-                }, 100);
-            } else if (hash === '#cart') {
-                history.replaceState(null, '', location.pathname + location.search);
-            }
-            updateCartUI();
-        }
-
-        document.addEventListener('DOMContentLoaded', init);
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && cartOpen) closeCart();
-        });
-    </script>
-
-</body>
-</html>
+            if (e.key === '
