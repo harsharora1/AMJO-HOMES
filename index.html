@@ -2583,6 +2583,27 @@
         const IMG_SEED = (name) =>
             `https://picsum.photos/seed/${encodeURIComponent(name)}/400/300`;
 
+        // ─── EXPANDED CUSHION COVERS WITH HERO IMAGES ──────────────────
+        const cushionCoverProducts = [
+            { name: "Floral Cushion Cover", desc: "Beautiful floral printed cushion cover that adds a touch of nature to any room. Perfect for gifting.", price: 399, images: ["hero2.png", "hero3.png"] },
+            { name: "Geometric Cushion Cover", desc: "Modern geometric pattern cushion cover with elegant design. A stylish addition to any sofa or bed.", price: 449, images: ["hero8.png", "hero9.png"] },
+            { name: "Boho Cushion Cover", desc: "Bohemian style cushion cover with vibrant colors and patterns. Ideal for eclectic home decor.", price: 499, images: ["hero10.png", "hero11.png"] },
+            { name: "Striped Cushion Cover", desc: "Classic striped cushion cover in premium fabric. Timeless design that complements any interior.", price: 379, images: ["hero12.png", "hero13.png"] },
+            { name: "Velvet Luxe Cushion Cover", desc: "Luxurious velvet cushion cover with a soft, plush feel. Adds elegance and comfort to any space.", price: 599, images: ["hero14.png", "hero15.png"] },
+            { name: "Embroidered Cushion Cover", desc: "Exquisitely embroidered cushion cover with intricate handwork. A true piece of art for your home.", price: 649, images: ["hero16.png", "hero17.png"] },
+            { name: "Linen Cushion Cover", desc: "Premium linen cushion cover with a natural, textured finish. Breathable and perfect for everyday use.", price: 429, images: ["hero18.png", "hero19.png"] },
+            { name: "Mandala Cushion Cover", desc: "Intricate mandala printed cushion cover with spiritual and artistic appeal. Great for meditation spaces.", price: 549, images: ["hero20.png", "hero21.png"] },
+            { name: "Patchwork Cushion Cover", desc: "Colorful patchwork cushion cover with a unique blend of fabrics and patterns. A statement piece.", price: 579, images: ["hero22.png", "hero23.png", "hero24.png"] },
+            { name: "Silk Cushion Cover", desc: "Luxurious silk cushion cover with a smooth, shiny finish. Perfect for formal living rooms and gifting.", price: 699, images: ["hero25.png", "hero26.png"] },
+            { name: "Abstract Art Cushion Cover", desc: "Bold abstract art design cushion cover for modern interiors. Adds a pop of color and creativity.", price: 479, images: ["hero27.png", "hero28.png"] },
+            { name: "Damask Cushion Cover", desc: "Elegant damask pattern cushion cover with a regal feel. A classic choice for sophisticated decor.", price: 529, images: ["hero29.png", "hero30.png"] },
+            { name: "Jacquard Cushion Cover", desc: "Premium jacquard woven cushion cover with rich texture and intricate patterns. A luxury gift.", price: 629, images: ["hero31.png", "hero32.png"] },
+            { name: "Moroccan Cushion Cover", desc: "Moroccan inspired cushion cover with bold geometric patterns and vibrant colors. Exotic and stylish.", price: 559, images: ["hero33.png", "hero34.png"] },
+            { name: "Tassel Cushion Cover", desc: "Beautiful cushion cover with elegant tassel detailing. Adds charm and personality to any space.", price: 489, images: ["hero35.png", "hero36.png"] },
+            { name: "Handwoven Cushion Cover", desc: "Handwoven cushion cover with artisanal quality and unique texture. A thoughtful gift for home lovers.", price: 599, images: ["hero41.png", "hero42.png"] },
+            { name: "Printed Cotton Cushion Cover", desc: "Soft cotton cushion cover with vibrant prints. Comfortable, durable, and perfect for daily use.", price: 349, images: ["hero43.png", "hero44.png"] }
+        ];
+
         const allProducts = {
             bedsheets: {
                 title: "Bedsheets",
@@ -2643,16 +2664,7 @@
             cushioncovers: {
                 title: "Cushion Covers",
                 desc: "Stylish cushion covers to add charm to any space. Great for gifting.",
-                products: [
-                    { name: "Printed Cushion Cover", desc: "Elegant printed cushion cover with vibrant design. Perfect for living room decor.",
-                        price: 349 },
-                    { name: "Embroidered Cushion Cover", desc: "Beautiful embroidered cushion cover with intricate handwork. A thoughtful gift.",
-                        price: 499 },
-                    { name: "Cotton Cushion Cover", desc: "Soft cotton cushion cover in classic solid colors. Versatile gift for any home.",
-                        price: 299 },
-                    { name: "Designer Cushion Cover", desc: "Premium designer cushion cover with luxurious finish. Ideal for gifting.",
-                        price: 599 }
-                ]
+                products: cushionCoverProducts
             },
             otheritems: {
                 title: "Other Items",
@@ -2701,9 +2713,9 @@
             }
         };
 
-        // For categories other than 'otheritems', generate images via seed
+        // For categories other than 'cushioncovers' and 'otheritems', generate images via seed
         Object.keys(allProducts).forEach(cat => {
-            if (cat === 'otheritems') return;
+            if (cat === 'cushioncovers' || cat === 'otheritems') return;
             allProducts[cat].products.forEach(p => {
                 p.images = [
                     IMG_SEED(p.name + '-1'),
@@ -2835,6 +2847,10 @@
                 // For 'otheritems', limit to first 4 products on home page
                 let displayProducts = category.products;
                 if (cat === 'otheritems') {
+                    displayProducts = category.products.slice(0, 4);
+                }
+                // For cushioncovers, show first 4 on home page
+                if (cat === 'cushioncovers') {
                     displayProducts = category.products.slice(0, 4);
                 }
                 const wrapper = document.createElement('div');
